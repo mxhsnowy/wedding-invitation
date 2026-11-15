@@ -11,7 +11,9 @@
   <meta property="og:type" content="website">
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Great Vibes, Cormorant Garamond, Montserrat -->
+  <!-- Google Fonts & Cloudinary CDN Preconnect -->
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+  <link rel="dns-prefetch" href="https://res.cloudinary.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -645,43 +647,123 @@
       <!-- 6-Photo Filterable Grid -->
       <div id="gallery-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5 max-w-3xl mx-auto">
         <!-- Item 0 -->
-        <div data-category="portrait" onclick="openLightbox(0)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer">
-          <img id="gallery-img-0" loading="lazy" decoding="async" src="https://res.cloudinary.com/w2k84d9a/image/upload/v1794742336/img1.webp" alt="Nắng sớm bên thềm cỏ xanh" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+        <div data-category="portrait" onclick="openLightbox(0)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+          <img
+            id="gallery-img-0"
+            width="600"
+            height="800"
+            loading="lazy"
+            decoding="async"
+            fetchpriority="high"
+            src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742336/img1.webp"
+            srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742336/img1.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742336/img1.webp 600w"
+            sizes="(max-width: 640px) 46vw, 250px"
+            data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742336/img1.webp"
+            onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+            alt="Nắng sớm bên thềm cỏ xanh"
+            class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+          />
           <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
           </div>
         </div>
         <!-- Item 1 -->
-        <div data-category="nature" onclick="openLightbox(1)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer">
-          <img id="gallery-img-1" loading="lazy" decoding="async" src="https://res.cloudinary.com/w2k84d9a/image/upload/v1794742327/img2.webp" alt="Thuyền hoa trên mặt hồ sương sớm" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+        <div data-category="nature" onclick="openLightbox(1)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+          <img
+            id="gallery-img-1"
+            width="600"
+            height="800"
+            loading="lazy"
+            decoding="async"
+            fetchpriority="high"
+            src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742327/img2.webp"
+            srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742327/img2.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742327/img2.webp 600w"
+            sizes="(max-width: 640px) 46vw, 250px"
+            data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742327/img2.webp"
+            onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+            alt="Thuyền hoa trên mặt hồ sương sớm"
+            class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+          />
           <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
           </div>
         </div>
         <!-- Item 2 -->
-        <div data-category="nature" onclick="openLightbox(2)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer">
-          <img id="gallery-img-2" loading="lazy" decoding="async" src="https://res.cloudinary.com/w2k84d9a/image/upload/v1794742328/img3.webp" alt="Lời thì thầm giữa rừng cây" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+        <div data-category="nature" onclick="openLightbox(2)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+          <img
+            id="gallery-img-2"
+            width="600"
+            height="800"
+            loading="lazy"
+            decoding="async"
+            src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742328/img3.webp"
+            srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742328/img3.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742328/img3.webp 600w"
+            sizes="(max-width: 640px) 46vw, 250px"
+            data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742328/img3.webp"
+            onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+            alt="Lời thì thầm giữa rừng cây"
+            class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+          />
           <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
           </div>
         </div>
         <!-- Item 3 -->
-        <div data-category="portrait" onclick="openLightbox(3)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer">
-          <img id="gallery-img-3" loading="lazy" decoding="async" src="https://res.cloudinary.com/w2k84d9a/image/upload/v1794742327/img4.webp" alt="Nắm tay đi khắp thế gian" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+        <div data-category="portrait" onclick="openLightbox(3)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+          <img
+            id="gallery-img-3"
+            width="600"
+            height="800"
+            loading="lazy"
+            decoding="async"
+            src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742327/img4.webp"
+            srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742327/img4.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742327/img4.webp 600w"
+            sizes="(max-width: 640px) 46vw, 250px"
+            data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742327/img4.webp"
+            onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+            alt="Nắm tay đi khắp thế gian"
+            class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+          />
           <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
           </div>
         </div>
         <!-- Item 4 -->
-        <div data-category="details" onclick="openLightbox(4)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer">
-          <img id="gallery-img-4" loading="lazy" decoding="async" src="https://res.cloudinary.com/w2k84d9a/image/upload/v1794742333/img5.webp" alt="Hoa cưới hồng phấn & lá khuynh diệp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+        <div data-category="details" onclick="openLightbox(4)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+          <img
+            id="gallery-img-4"
+            width="600"
+            height="800"
+            loading="lazy"
+            decoding="async"
+            src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742333/img5.webp"
+            srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742333/img5.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742333/img5.webp 600w"
+            sizes="(max-width: 640px) 46vw, 250px"
+            data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742333/img5.webp"
+            onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+            alt="Hoa cưới hồng phấn & lá khuynh diệp"
+            class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+          />
           <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
           </div>
         </div>
         <!-- Item 5 -->
-        <div data-category="details" onclick="openLightbox(5)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer">
-          <img id="gallery-img-5" loading="lazy" decoding="async" src="https://res.cloudinary.com/w2k84d9a/image/upload/v1794742327/img6.webp" alt="Nhẫn cưới & Lời hẹn ước" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+        <div data-category="details" onclick="openLightbox(5)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+          <img
+            id="gallery-img-5"
+            width="600"
+            height="800"
+            loading="lazy"
+            decoding="async"
+            src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742327/img6.webp"
+            srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742327/img6.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742327/img6.webp 600w"
+            sizes="(max-width: 640px) 46vw, 250px"
+            data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742327/img6.webp"
+            onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+            alt="Nhẫn cưới & Lời hẹn ước"
+            class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+          />
           <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
           </div>
@@ -1321,8 +1403,18 @@
       const modalImg = document.getElementById('lightbox-img');
       const modalCap = document.getElementById('lightbox-caption');
       if (imgEl) {
-        modalImg.src = imgEl.src;
+        modalImg.src = imgEl.getAttribute('data-full-src') || imgEl.src;
         modalCap.innerText = galleryCaptions[currentSlideIndex] || '';
+
+        // Preload adjacent high-res slides in background for instant navigation
+        [-1, 1].forEach(offset => {
+          const adjIdx = (currentSlideIndex + offset + 6) % 6;
+          const adjEl = document.getElementById(`gallery-img-${adjIdx}`);
+          if (adjEl) {
+            const preloadImg = new Image();
+            preloadImg.src = adjEl.getAttribute('data-full-src') || adjEl.src;
+          }
+        });
       }
     }
 
@@ -1333,7 +1425,11 @@
         const reader = new FileReader();
         reader.onload = function(e) {
           const targetImg = document.getElementById(`gallery-img-${idx}`);
-          if (targetImg) targetImg.src = e.target.result;
+          if (targetImg) {
+            targetImg.removeAttribute('srcset');
+            targetImg.src = e.target.result;
+            targetImg.setAttribute('data-full-src', e.target.result);
+          }
         };
         reader.readAsDataURL(file);
       });
@@ -1798,6 +1894,12 @@
       initGuestGreeting();
       renderLoveTimeline();
       renderWishesFeed();
+      document.querySelectorAll('#gallery-grid img').forEach(img => {
+        if (img.complete) {
+          img.classList.remove('opacity-0');
+          img.parentElement.classList.remove('animate-pulse');
+        }
+      });
     });
   </script>
 </body>
