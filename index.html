@@ -59,49 +59,12 @@
       color: #333A32;
     }
 
-    /* 3D Envelope Splash Screen Styling */
-    .perspective-1000 {
-      perspective: 1200px;
-    }
-    .envelope-flap {
-      transform-origin: top center;
-      transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.3s 0.4s;
-      transform-style: preserve-3d;
-    }
-    .envelope-open .envelope-flap {
-      transform: rotateX(180deg);
-      z-index: 10;
-    }
-    .envelope-letter {
-      transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.35s, opacity 0.6s ease;
-    }
-    .envelope-open .envelope-letter {
-      transform: translateY(-95px) scale(1.03);
-      z-index: 30;
-    }
-    .wax-seal {
-      transition: transform 0.5s ease, opacity 0.4s ease;
-    }
-    .envelope-open .wax-seal {
-      transform: scale(1.3) rotate(15deg);
-      opacity: 0;
-      pointer-events: none;
-    }
-
     @keyframes spinVinyl {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
     .animate-vinyl {
       animation: spinVinyl 7s linear infinite;
-    }
-
-    @keyframes pulseGentle {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.06); }
-    }
-    .animate-pulse-gentle {
-      animation: pulseGentle 2.8s ease-in-out infinite;
     }
 
     /* Custom Scrollbar */
@@ -130,90 +93,6 @@
   </style>
 </head>
 <body class="font-sans antialiased overflow-x-hidden relative selection:bg-botanical-blush selection:text-botanical-deepsage">
-
-  <!-- =====================================================================
-       1. INTERACTIVE 3D WAX-SEALED ENVELOPE SPLASH SCREEN
-       ===================================================================== -->
-  <div id="envelope-splash" class="fixed inset-0 z-[100] bg-[#FAF9F5]/95 backdrop-blur-md flex flex-col items-center justify-center p-4 transition-opacity duration-700">
-    <!-- Decorative Background Rings -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none flex items-center justify-center">
-      <div class="w-[450px] h-[450px] sm:w-[620px] sm:h-[620px] rounded-full border border-botanical-sage/20"></div>
-      <div class="absolute w-[340px] h-[340px] sm:w-[500px] sm:h-[500px] rounded-full border border-botanical-blush/30"></div>
-    </div>
-
-    <div class="relative z-10 text-center mb-8">
-      <span class="inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-botanical-lightsage text-botanical-darksage text-xs font-medium tracking-widest uppercase mb-2 border border-botanical-sage/30">
-        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-botanical-deepblush"></i>
-        <span data-i18n="splash_badge">Thiệp Mời Lễ Thành Hôn</span>
-      </span>
-      <h1 class="font-script text-5xl sm:text-6xl text-botanical-darksage mt-1">Mạnh Huy &amp; Thu Hiền</h1>
-      <p class="font-serif italic text-sm sm:text-base text-botanical-charcoal/70 mt-1">Chủ Nhật • 29 . 11 . 2026 • Hà Nội</p>
-      <p class="font-serif italic text-xs text-botanical-charcoal/60 mt-0.5" data-i18n="lunar_29_11">(Tức ngày 21 tháng 10 năm Bính Ngọ)</p>
-    </div>
-
-    <!-- 3D Envelope Wrapper -->
-    <div id="envelope-box" class="relative w-full max-w-[360px] sm:max-w-[430px] h-[250px] sm:h-[280px] perspective-1000 cursor-pointer group" onclick="openWeddingEnvelope()">
-      <!-- Back of Envelope -->
-      <div class="absolute inset-0 rounded-2xl bg-[#8FA68B] shadow-2xl border border-botanical-darksage/30"></div>
-
-      <!-- Inner Letter Card Sliding Up -->
-      <div class="envelope-letter absolute left-4 right-4 top-3 bottom-4 bg-[#FAF9F5] rounded-xl shadow-lg border border-botanical-blush/60 p-5 flex flex-col items-center justify-center text-center z-20">
-        <p class="text-[10px] uppercase tracking-[0.25em] text-botanical-darksage font-semibold mb-1" data-i18n="splash_invite_label">Trân trọng kính mời</p>
-        <h2 id="splash-guest-name" class="font-serif text-2xl sm:text-3xl font-bold text-botanical-charcoal border-b border-botanical-blush pb-1.5 px-4 mb-2">
-          Quý Khách &amp; Gia Đình
-        </h2>
-        <p class="font-serif italic text-xs sm:text-sm text-botanical-charcoal/80 max-w-[260px]" data-i18n="splash_sub">
-          Đến dự buổi tiệc chung vui cùng gia đình chúng tôi
-        </p>
-        <div class="mt-2.5 flex flex-col items-center gap-0.5 text-[11px] text-botanical-deepblush font-semibold">
-          <div class="flex items-center gap-2">
-            <span>29.11.2026</span>
-            <span>•</span>
-            <span>10:00 AM</span>
-          </div>
-          <span class="text-[10px] font-serif italic text-botanical-charcoal/65 font-normal" data-i18n="lunar_29_11_short">(21/10 Âm lịch - Bính Ngọ)</span>
-        </div>
-      </div>
-
-      <!-- Envelope Side & Bottom Pocket Flaps -->
-      <div class="absolute inset-0 z-30 pointer-events-none overflow-hidden rounded-2xl">
-        <svg viewBox="0 0 400 260" preserveAspectRatio="none" class="w-full h-full">
-          <!-- Left Flap -->
-          <polygon points="0,0 200,140 0,260" fill="#9CAF98"/>
-          <!-- Right Flap -->
-          <polygon points="400,0 200,140 400,260" fill="#92A68E"/>
-          <!-- Bottom Flap -->
-          <polygon points="0,260 200,125 400,260" fill="#A5B8A1" stroke="#FAF9F5" stroke-opacity="0.35" stroke-width="1.5"/>
-        </svg>
-      </div>
-
-      <!-- Top 3D Hinge Flap -->
-      <div class="envelope-flap absolute top-0 left-0 right-0 h-[145px] z-40 pointer-events-none">
-        <svg viewBox="0 0 400 145" preserveAspectRatio="none" class="w-full h-full drop-shadow-md">
-          <polygon points="0,0 200,142 400,0" fill="#849B80" stroke="#FAF9F5" stroke-opacity="0.4" stroke-width="1.5"/>
-        </svg>
-      </div>
-
-      <!-- Botanical Rose Gold / Blush Wax Seal Button -->
-      <div class="wax-seal absolute left-1/2 top-[132px] -translate-x-1/2 -translate-y-1/2 z-50 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-[#E5989B] via-[#D98A94] to-[#B56576] shadow-[0_6px_20px_rgba(181,101,118,0.55)] border-2 border-[#FAF9F5]/80 flex flex-col items-center justify-center text-white group-hover:scale-110 transition-transform animate-pulse-gentle">
-        <div class="w-12 h-12 sm:w-15 sm:h-15 rounded-full border border-white/40 flex flex-col items-center justify-center">
-          <span class="font-script text-lg sm:text-xl leading-none">H&amp;H</span>
-          <span class="text-[8px] uppercase tracking-widest mt-0.5 font-semibold" data-i18n="open_btn">Mở Thiệp</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Action Controls below Envelope -->
-    <div class="relative z-10 mt-9 flex flex-col items-center gap-3">
-      <button onclick="openWeddingEnvelope()" class="px-8 py-3 rounded-full bg-botanical-darksage text-white hover:bg-botanical-deepsage text-xs sm:text-sm font-medium tracking-wider uppercase shadow-lg hover:shadow-xl flex items-center gap-2 transition-all">
-        <i data-lucide="mail-open" class="w-4 h-4 text-botanical-blush"></i>
-        <span data-i18n="click_to_open">Chạm Để Mở Thiệp &amp; Phát Nhạc</span>
-      </button>
-      <button onclick="skipEnvelopeWithoutMusic()" class="text-xs text-botanical-charcoal/60 hover:text-botanical-darksage underline transition" data-i18n="open_muted">
-        Mở thiệp ở chế độ im lặng
-      </button>
-    </div>
-  </div>
 
   <!-- =====================================================================
        2. INTERACTIVE PETALS & EUCALYPTUS LEAVES CANVAS
@@ -1083,12 +962,14 @@
       showToast(currentLang === 'vi' ? "Đã chuyển sang Tiếng Việt" : "Switched to English");
     }
 
-    // --- 2. 3D ENVELOPE SPLASH SCREEN & PERSONALIZED GUEST NAME ---
+    // --- 2. PERSONALIZED GUEST NAME ---
     function applyGuestNameToUI(guestName) {
       if (!guestName || !guestName.trim()) return;
       const clean = guestName.trim();
-      document.getElementById('splash-guest-name').innerText = clean;
-      document.getElementById('guest-greeting-text').innerHTML = `Trân trọng kính mời: <strong class="underline decoration-botanical-blush">${escapeHtml(clean)}</strong>`;
+      const greetingEl = document.getElementById('guest-greeting-text');
+      if (greetingEl) {
+        greetingEl.innerHTML = `Trân trọng kính mời: <strong class="underline decoration-botanical-blush">${escapeHtml(clean)}</strong>`;
+      }
       const nameInput = document.getElementById('rsvp-name');
       if (nameInput) nameInput.value = clean;
     }
@@ -1097,23 +978,6 @@
       const params = new URLSearchParams(window.location.search);
       const guestName = params.get('guest') || params.get('khach') || params.get('to');
       if (guestName) applyGuestNameToUI(guestName);
-    }
-
-    function openWeddingEnvelope() {
-      const box = document.getElementById('envelope-box');
-      const splash = document.getElementById('envelope-splash');
-      box.classList.add('envelope-open');
-      startBackgroundMusic();
-      setTimeout(() => {
-        splash.classList.add('opacity-0', 'pointer-events-none');
-        setTimeout(() => splash.classList.add('hidden'), 700);
-      }, 1050);
-    }
-
-    function skipEnvelopeWithoutMusic() {
-      const splash = document.getElementById('envelope-splash');
-      splash.classList.add('opacity-0', 'pointer-events-none');
-      setTimeout(() => splash.classList.add('hidden'), 500);
     }
 
     // --- 3. INTERACTIVE LOVE STORY TIMELINE DATA & RENDERER ---
