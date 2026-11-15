@@ -691,7 +691,7 @@
           <div class="w-44 h-44 p-2.5 rounded-xl border border-dashed border-botanical-sage bg-botanical-ivory mb-4">
             <img 
               id="groom-qr-img"
-              src="" 
+              src="https://res.cloudinary.com/w2k84d9a/image/upload/v1794750464/huy-vietqr.png" 
               alt="VietQR Chú Rể Mạnh Xuân Huy" 
               class="w-full h-full object-contain rounded"
             />
@@ -713,7 +713,7 @@
           <div class="w-44 h-44 p-2.5 rounded-xl border border-dashed border-botanical-blush bg-botanical-softpink/40 mb-4">
             <img 
               id="bride-qr-img"
-              src="" 
+              src="https://res.cloudinary.com/w2k84d9a/image/upload/v1794750463/hien-vietqr.png" 
               alt="VietQR Cô Dâu Vũ Thu Hiền" 
               class="w-full h-full object-contain rounded"
             />
@@ -1372,8 +1372,8 @@
     function updateDynamicVietQR() {
       const memo = document.getElementById('qr-custom-memo').value.trim() || "Chuc mung hanh phuc";
       const encoded = encodeURIComponent(memo);
-      document.getElementById('groom-qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=VIETQR%7CVietcombank%7C1029384756%7CNGUYEN%20XUAN%20HUY%7C${encoded}`;
-      document.getElementById('bride-qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=VIETQR%7CTechcombank%7C1903889977%7CTRAN%20THU%20HIEN%7C${encoded}`;
+      document.getElementById('groom-qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=VIETQR%7CVietcombank%7C1043227223%7CMANH%20XUAN%20HUY%7C${encoded}`;
+      document.getElementById('bride-qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=VIETQR%7CBIDV%7C4504848044%7CVU%20THU%20HIEN%7C${encoded}`;
       showToast("Đã cập nhật lời nhắn trên mã QR Mừng Cưới!");
     }
 
