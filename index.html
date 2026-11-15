@@ -51,18 +51,48 @@
 
   <style>
     /* Whole-page scrolling background image */
-    /* Whole-page scrolling background image */
     body {
       background-color: #FAF9F5;
       background-image: url('https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto/v1794756418/rwtyhykd1f3uzekji2iu.webp');
       background-size: 100% auto;
       background-position: top center;
       background-repeat: repeat-y;
-      background-image: url('https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto/v1794756418/rwtyhykd1f3uzekji2iu.webp');
-      background-size: 100% auto;
-      background-position: top center;
-      background-repeat: repeat-y;
       color: #333A32;
+    }
+
+    /* Liquid Glass Foreground Effect (Refraction + Specular Rim + Caustic Sheen, No Heavy Blur) */
+    .liquid-glass {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.52) 0%,
+        rgba(250, 249, 245, 0.26) 35%,
+        rgba(255, 255, 255, 0.34) 70%,
+        rgba(253, 242, 242, 0.48) 100%
+      );
+      backdrop-filter: url(#liquid-glass-refraction) saturate(155%) brightness(105%) contrast(103%);
+      -webkit-backdrop-filter: url(#liquid-glass-refraction) saturate(155%) brightness(105%) contrast(103%);
+      border: 1.5px solid rgba(255, 255, 255, 0.78);
+      box-shadow:
+        inset 0 2px 3px rgba(255, 255, 255, 0.95),
+        inset 0 -2px 4px rgba(255, 255, 255, 0.6),
+        inset 2px 0 4px rgba(255, 255, 255, 0.75),
+        inset -2px 0 4px rgba(244, 194, 194, 0.45),
+        0 25px 70px -10px rgba(47, 66, 46, 0.22),
+        0 4px 20px rgba(255, 255, 255, 0.35);
+    }
+    .liquid-glass::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: radial-gradient(
+        120% 60% at 15% 0%,
+        rgba(255, 255, 255, 0.55) 0%,
+        rgba(255, 255, 255, 0.12) 45%,
+        transparent 75%
+      );
+      z-index: 1;
     }
 
     @keyframes spinVinyl {
@@ -99,6 +129,18 @@
   </style>
 </head>
 <body class="font-sans antialiased overflow-x-hidden relative selection:bg-botanical-blush selection:text-botanical-deepsage">
+
+  <!-- SVG Optical Refraction Filter for Liquid Glass Foreground -->
+  <svg class="hidden" aria-hidden="true">
+    <defs>
+      <filter id="liquid-glass-refraction" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.012 0.015" numOctaves="2" seed="7" result="noise" />
+        <feGaussianBlur in="noise" stdDeviation="2.5" result="smoothNoise" />
+        <feDisplacementMap in="SourceGraphic" in2="smoothNoise" scale="14" xChannelSelector="R" yChannelSelector="G" result="refracted" />
+        <feGaussianBlur in="refracted" stdDeviation="1.2" />
+      </filter>
+    </defs>
+  </svg>
 
   <!-- =====================================================================
        2. INTERACTIVE PETALS & EUCALYPTUS LEAVES CANVAS
@@ -188,9 +230,9 @@
   </div>
 
   <!-- =====================================================================
-       MAIN INVITATION SHEET CONTAINER (SINGLE FOREGROUND AT 50% OPACITY + BLUR)
+       MAIN INVITATION SHEET CONTAINER (LIQUID GLASS FOREGROUND)
        ===================================================================== -->
-  <main class="max-w-4xl mx-auto my-0 sm:my-8 bg-[#FAF9F5]/70 backdrop-blur-md sm:rounded-[36px] sm:shadow-[0_25px_80px_rgba(79,99,78,0.18)] sm:border border-botanical-sage/30 overflow-hidden relative">
+  <main class="max-w-4xl mx-auto my-0 sm:my-8 liquid-glass sm:rounded-[36px] overflow-hidden relative">
 
     <!-- TOP-RIGHT WATERCOLOR BOTANICAL ROSE & EUCALYPTUS SVG -->
     <div class="absolute top-0 right-0 w-60 sm:w-80 md:w-96 pointer-events-none z-10 overflow-hidden">
