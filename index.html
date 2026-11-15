@@ -639,15 +639,15 @@
         <button onclick="filterGallery('portrait')" data-filter="portrait" class="gallery-filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-botanical-charcoal border border-botanical-sage/40 hover:border-botanical-darksage transition">
           Chân Dung Cặp Đôi
         </button>
-        <button onclick="filterGallery('details')" data-filter="details" class="gallery-filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-botanical-charcoal border border-botanical-sage/40 hover:border-botanical-darksage transition">
-          Hoa Cưới &amp; Nhẫn
+        <button onclick="filterGallery('night')" data-filter="night" class="gallery-filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-botanical-charcoal border border-botanical-sage/40 hover:border-botanical-darksage transition">
+          Tiệc cưới
         </button>
       </div>
 
       <!-- 6-Photo Filterable Grid -->
       <div id="gallery-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5 max-w-3xl mx-auto">
         <!-- Item 0 -->
-        <div data-category="portrait" onclick="openLightbox(0)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+        <div data-category="nature" onclick="openLightbox(0)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
           <img
             id="gallery-img-0"
             width="600"
@@ -660,7 +660,7 @@
             sizes="(max-width: 640px) 46vw, 250px"
             data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742336/img1.webp"
             onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-            alt="Nắng sớm bên thềm cỏ xanh"
+            alt="Ngượng ngùng của cô dâu"
             class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
           />
           <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -681,7 +681,7 @@
             sizes="(max-width: 640px) 46vw, 250px"
             data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742327/img2.webp"
             onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-            alt="Thuyền hoa trên mặt hồ sương sớm"
+            alt="Lãng mạn dưới khung trời và thiên nhiên"
             class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
           />
           <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -689,7 +689,7 @@
           </div>
         </div>
         <!-- Item 2 -->
-        <div data-category="nature" onclick="openLightbox(2)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+        <div data-category="portrait" onclick="openLightbox(2)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
           <img
             id="gallery-img-2"
             width="600"
@@ -701,7 +701,7 @@
             sizes="(max-width: 640px) 46vw, 250px"
             data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742328/img3.webp"
             onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-            alt="Lời thì thầm giữa rừng cây"
+            alt="Ánh chiều tà đầy tình yêu"
             class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
           />
           <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -709,7 +709,7 @@
           </div>
         </div>
         <!-- Item 3 -->
-        <div data-category="portrait" onclick="openLightbox(3)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+        <div data-category="nature" onclick="openLightbox(3)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
           <img
             id="gallery-img-3"
             width="600"
@@ -721,7 +721,7 @@
             sizes="(max-width: 640px) 46vw, 250px"
             data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742327/img4.webp"
             onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-            alt="Nắm tay đi khắp thế gian"
+            alt="Bên nhau dưới bầu trời đẹp"
             class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
           />
           <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -729,7 +729,7 @@
           </div>
         </div>
         <!-- Item 4 -->
-        <div data-category="details" onclick="openLightbox(4)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+        <div data-category="portrait" onclick="openLightbox(4)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
           <img
             id="gallery-img-4"
             width="600"
@@ -741,7 +741,7 @@
             sizes="(max-width: 640px) 46vw, 250px"
             data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742333/img5.webp"
             onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-            alt="Hoa cưới hồng phấn & lá khuynh diệp"
+            alt="Nương tựa vào nhau"
             class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
           />
           <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -749,7 +749,7 @@
           </div>
         </div>
         <!-- Item 5 -->
-        <div data-category="details" onclick="openLightbox(5)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+        <div data-category="night" onclick="openLightbox(5)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
           <img
             id="gallery-img-5"
             width="600"
@@ -761,7 +761,7 @@
             sizes="(max-width: 640px) 46vw, 250px"
             data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742327/img6.webp"
             onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-            alt="Nhẫn cưới & Lời hẹn ước"
+            alt="Đêm tiệc cưới hạnh phúc"
             class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
           />
           <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
