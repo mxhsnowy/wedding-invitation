@@ -154,10 +154,10 @@
       <span id="toast-message">Đã lưu thông tin!</span>
     </div>
 
-    <!-- Background Audio Element (Westlife - I Lay My Love On You) -->
+    <!-- Background Audio Element (Westlife - I Lay My Love On You, starting at Chorus 0:47) -->
     <audio id="bg-audio-player" loop preload="auto">
-      <source src="https://archive.org/download/HaloHaloMusikahan/Westlife-ILayMyLoveOnYou.mp3" type="audio/mpeg">
-      <source src="./assets/i-lay-my-love-on-you.mp3" type="audio/mpeg">
+      <source src="https://archive.org/download/HaloHaloMusikahan/Westlife-ILayMyLoveOnYou.mp3#t=47" type="audio/mpeg">
+      <source src="./assets/i-lay-my-love-on-you.mp3#t=47" type="audio/mpeg">
     </audio>
 
     <!-- Song Selector Pill -->
@@ -1426,28 +1426,41 @@
       showToast("Đã lưu cấu hình Google Sheets Webhook!");
     }
 
-    // --- 9. BACKGROUND MUSIC: WESTLIFE - I LAY MY LOVE ON YOU (MEDIUM VOLUME) ---
+    // --- 9. BACKGROUND MUSIC: WESTLIFE - I LAY MY LOVE ON YOU (CHORUS BY DEFAULT) ---
     let audioCtx = null;
     let isPlayingMusic = false;
     let melodyTimer = null;
     let noteCursor = 0;
+    let hasStartedChorus = false;
+    const CHORUS_START_SEC = 47; // "I lay my love on you..." chorus start
     const bgAudio = document.getElementById('bg-audio-player');
     if (bgAudio) {
-      bgAudio.volume = 0.5; // Medium volume (50%)
+      bgAudio.volume = 0.3;
+      bgAudio.addEventListener('loadedmetadata', () => {
+        if (!hasStartedChorus && bgAudio.currentTime < CHORUS_START_SEC) {
+          bgAudio.currentTime = CHORUS_START_SEC;
+        }
+      });
     }
 
     const westlifeTrack = {
       name: "I Lay My Love On You - Westlife",
-      tempo: 420,
-      // Chorus melody of "I Lay My Love On You" ("Just a smile and the rain is gone...")
+      tempo: 390,
+      // Chorus melody: "I lay my love on you, it's all I wanna do, every time I breathe I feel brand new..."
       notes: [
-        { f: 415.30, b: 164.81, d: 380 }, { f: 440.00, b: 164.81, d: 380 },
-        { f: 493.88, b: 164.81, d: 520 }, { f: 493.88, b: 246.94, d: 380 },
-        { f: 554.37, b: 246.94, d: 380 }, { f: 493.88, b: 246.94, d: 380 },
-        { f: 440.00, b: 220.00, d: 450 }, { f: 415.30, b: 220.00, d: 520 },
-        { f: 369.99, b: 185.00, d: 380 }, { f: 415.30, b: 185.00, d: 380 },
-        { f: 440.00, b: 220.00, d: 520 }, { f: 369.99, b: 246.94, d: 450 },
-        { f: 329.63, b: 164.81, d: 650 }
+        // "I lay my love on you"
+        { f: 554.37, b: 220.00, d: 360 }, { f: 587.33, b: 220.00, d: 360 },
+        { f: 659.25, b: 220.00, d: 420 }, { f: 739.99, b: 146.83, d: 380 },
+        { f: 659.25, b: 146.83, d: 380 }, { f: 587.33, b: 146.83, d: 520 },
+        // "It's all I wanna do"
+        { f: 493.88, b: 164.81, d: 360 }, { f: 554.37, b: 164.81, d: 360 },
+        { f: 587.33, b: 164.81, d: 420 }, { f: 659.25, b: 220.00, d: 380 },
+        { f: 587.33, b: 220.00, d: 380 }, { f: 554.37, b: 220.00, d: 520 },
+        // "Every time I breathe I feel brand new"
+        { f: 440.00, b: 185.00, d: 350 }, { f: 493.88, b: 185.00, d: 350 },
+        { f: 554.37, b: 185.00, d: 380 }, { f: 587.33, b: 146.83, d: 420 },
+        { f: 554.37, b: 146.83, d: 380 }, { f: 493.88, b: 164.81, d: 380 },
+        { f: 440.00, b: 164.81, d: 380 }, { f: 493.88, b: 220.00, d: 600 }
       ]
     };
 
@@ -1504,7 +1517,13 @@
       document.getElementById('song-title-text').innerText = westlifeTrack.name;
 
       if (bgAudio) {
-        bgAudio.volume = 0.5;
+        bgAudio.volume = 0.3;
+        if (!hasStartedChorus) {
+          try {
+            bgAudio.currentTime = CHORUS_START_SEC;
+          } catch (e) {}
+          hasStartedChorus = true;
+        }
         const playPromise = bgAudio.play();
         if (playPromise !== undefined) {
           playPromise.catch(() => {
