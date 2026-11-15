@@ -234,11 +234,8 @@
       <!-- Desktop Menu -->
       <div class="hidden lg:flex items-center gap-5 text-[11px] uppercase tracking-widest font-semibold text-botanical-charcoal/80">
         <a href="#cap-doi" class="hover:text-botanical-darksage transition" data-i18n="nav_couple">Cặp Đôi</a>
-        <a href="#chuyen-tinh" class="hover:text-botanical-darksage transition" data-i18n="nav_story">Chuyện Tình</a>
         <a href="#lich-trinh" class="hover:text-botanical-darksage transition" data-i18n="nav_schedule">Lịch Trình</a>
         <a href="#album-anh" class="hover:text-botanical-darksage transition" data-i18n="nav_gallery">Album Ảnh</a>
-        <a href="#rsvp" class="px-3.5 py-1.5 rounded-full bg-botanical-sage text-white hover:bg-botanical-darksage transition shadow-xs" data-i18n="nav_rsvp">Xác Nhận &amp; Chỗ Ngồi</a>
-        <a href="#luu-but" class="hover:text-botanical-darksage transition" data-i18n="nav_guestbook">Lưu Bút</a>
         <a href="#mung-cuoi" class="hover:text-botanical-darksage transition" data-i18n="nav_gift">Mừng Cưới</a>
       </div>
 
@@ -599,17 +596,17 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
             <div class="p-3.5 rounded-xl bg-botanical-lightsage/50 border border-botanical-sage/30">
-              <span class="font-mono text-xs font-bold text-botanical-darksage">9:30 AM</span>
+              <span class="font-mono text-xs font-bold text-botanical-darksage">9:30</span>
               <p class="font-serif font-bold text-base text-botanical-charcoal mt-1">Đón Khách</p>
               <p class="text-[11px] text-botanical-charcoal/65">Chụp ảnh Photobooth</p>
             </div>
             <div class="p-3.5 rounded-xl bg-botanical-lightsage/50 border border-botanical-sage/30">
-              <span class="font-mono text-xs font-bold text-botanical-darksage">10:00 AM</span>
+              <span class="font-mono text-xs font-bold text-botanical-darksage">10:00</span>
               <p class="font-serif font-bold text-base text-botanical-charcoal mt-1">Nghi Lễ Thành Hôn</p>
               <p class="text-[11px] text-botanical-charcoal/65">Trao nhẫn &amp; Rót rượu</p>
             </div>
             <div class="p-3.5 rounded-xl bg-botanical-lightsage/50 border border-botanical-sage/30">
-              <span class="font-mono text-xs font-bold text-botanical-darksage">10:30 AM</span>
+              <span class="font-mono text-xs font-bold text-botanical-darksage">10:30</span>
               <p class="font-serif font-bold text-base text-botanical-charcoal mt-1">Khai Tiệc Chung Vui</p>
               <p class="text-[11px] text-botanical-charcoal/65">Thưởng thức ẩm thực</p>
             </div>
@@ -776,131 +773,6 @@
           <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
           <span>Trình chiếu Lightbox toàn màn hình</span>
         </button>
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         SECTION 7: ADVANCED RSVP + DIETARY + INTERACTIVE BANQUET TABLE FINDER
-         ===================================================================== -->
-    <section id="rsvp" class="relative z-20 bg-[#9CAF98] text-white px-5 sm:px-14 py-14 shadow-inner">
-      <div class="max-w-3xl mx-auto">
-        <div class="text-center mb-8">
-          <span class="inline-block px-3 py-0.5 rounded-full bg-white/20 text-white text-[11px] uppercase tracking-widest mb-2">RSVP &amp; Seating Plan</span>
-          <h2 class="font-serif text-3xl sm:text-4xl font-normal tracking-wide text-white mb-2" data-i18n="rsvp_title">
-            Xác nhận tham dự (RSVP)
-          </h2>
-          <p class="text-xs sm:text-sm text-white/90 font-light max-w-lg mx-auto" data-i18n="rsvp_desc">
-            Hãy giúp chúng mình chuẩn bị đón tiếp chu đáo nhất bằng cách xác nhận thông tin và chọn khu vực bàn tiệc bên dưới nhé!
-          </p>
-        </div>
-
-  
-
-        <!-- RSVP Form -->
-        <form id="wedding-rsvp-form" class="space-y-4 text-left">
-          <input type="hidden" id="rsvp-table" value="Bàn 02 - Hội Bạn Đại Học & Phổ Thông">
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-            <div>
-              <label class="block text-[11px] uppercase tracking-wider text-white/90 mb-1">Họ và Tên khách mời *</label>
-              <input 
-                type="text" 
-                id="rsvp-name" 
-                required 
-                placeholder="Ví dụ: Anh Minh & Người thương" 
-                class="sage-input w-full px-4 py-3 rounded-lg bg-white/15 border border-white/65 text-white text-sm focus:outline-none focus:bg-white/25 focus:border-white transition"
-              />
-            </div>
-            <div>
-              <label class="block text-[11px] uppercase tracking-wider text-white/90 mb-1">Số điện thoại liên hệ</label>
-              <input 
-                type="tel" 
-                id="rsvp-phone" 
-                placeholder="09xx xxx xxx" 
-                class="sage-input w-full px-4 py-3 rounded-lg bg-white/15 border border-white/65 text-white text-sm focus:outline-none focus:bg-white/25 focus:border-white transition"
-              />
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-            <div>
-              <label class="block text-[11px] uppercase tracking-wider text-white/90 mb-1">Bạn là khách của</label>
-              <select id="rsvp-relation" class="w-full px-3.5 py-3 rounded-lg bg-white/15 border border-white/65 text-white text-sm focus:outline-none focus:bg-[#82997E]">
-                <option value="Khách Nhà Trai" class="text-botanical-charcoal bg-white">Khách Nhà Trai</option>
-                <option value="Khách Nhà Gái" class="text-botanical-charcoal bg-white">Khách Nhà Gái</option>
-                <option value="Bạn Chung Hai Nhà" class="text-botanical-charcoal bg-white">Bạn Chung Cả Hai</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-[11px] uppercase tracking-wider text-white/90 mb-1">Trạng thái tham dự</label>
-              <select id="rsvp-attending" class="w-full px-3.5 py-3 rounded-lg bg-white/15 border border-white/65 text-white text-sm focus:outline-none focus:bg-[#82997E]">
-                <option value="Chắc chắn tham dự" class="text-botanical-charcoal bg-white">Chắc chắn tham dự 🎉</option>
-                <option value="Rất tiếc bận việc" class="text-botanical-charcoal bg-white">Xin phép vắng mặt 🙏</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-[11px] uppercase tracking-wider text-white/90 mb-1">Số lượng người</label>
-              <select id="rsvp-guests" class="w-full px-3.5 py-3 rounded-lg bg-white/15 border border-white/65 text-white text-sm focus:outline-none focus:bg-[#82997E]">
-                <option value="1 người" class="text-botanical-charcoal bg-white">Đi 1 mình (1 người)</option>
-                <option value="2 người" class="text-botanical-charcoal bg-white">Đi 2 người</option>
-                <option value="Gia đình (3-4 người)" class="text-botanical-charcoal bg-white">Gia đình (3-4 người)</option>
-              </select>
-            </div>
-          </div>
-
-          <div>
-            <label class="block text-[11px] uppercase tracking-wider text-white/90 mb-1">Lời chúc gửi tới Cô Dâu &amp; Chú Rể</label>
-            <textarea 
-              id="rsvp-wishes" 
-              rows="2" 
-              placeholder="Gửi lời chúc trăm năm hạnh phúc..." 
-              class="sage-input w-full px-4 py-3 rounded-lg bg-white/15 border border-white/65 text-white text-sm focus:outline-none focus:bg-white/25 focus:border-white transition resize-none"></textarea>
-          </div>
-
-          <div class="pt-3 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button 
-              type="submit" 
-              id="rsvp-submit-btn"
-              class="w-full sm:w-auto px-14 py-3.5 rounded-full bg-white text-botanical-darksage hover:bg-botanical-softpink hover:text-botanical-deepsage font-semibold text-sm tracking-wide shadow-lg hover:shadow-xl transform active:scale-95 transition-all">
-              Gửi Xác Nhận Tham Dự
-            </button>
-            <button 
-              type="button"
-              onclick="toggleSheetsModal()" 
-              class="text-xs text-white/85 hover:text-white underline flex items-center gap-1.5">
-              <i data-lucide="database" class="w-3.5 h-3.5"></i>
-              <span>Kết nối Google Sheets Webhook</span>
-            </button>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         SECTION 8: LIVE INTERACTIVE GUESTBOOK WALL WITH HEART REACTIONS
-         ===================================================================== -->
-    <section id="luu-but" class="relative z-20 px-6 sm:px-14 py-14 bg-white/60 border-t border-botanical-sage/20">
-      <div class="max-w-3xl mx-auto">
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
-          <div>
-            <p class="text-xs uppercase tracking-[0.25em] text-botanical-darksage font-semibold mb-1">Guestbook &amp; Blessings</p>
-            <h2 class="font-serif text-3xl sm:text-4xl text-botanical-charcoal font-semibold flex items-center gap-2">
-              <span data-i18n="gb_title">Sổ Lưu Bút Yêu Thương</span>
-              <span id="wishes-count" class="text-sm font-sans font-bold px-3 py-0.5 rounded-full bg-botanical-lightsage text-botanical-darksage">0</span>
-            </h2>
-          </div>
-
-          <!-- Filter Guestbook by Side -->
-          <div class="flex items-center gap-1.5 text-xs">
-            <button onclick="setWishFilter('all')" id="wf-all" class="px-3 py-1 rounded-full bg-botanical-darksage text-white font-medium">Tất cả</button>
-            <button onclick="setWishFilter('Khách Nhà Trai')" id="wf-groom" class="px-3 py-1 rounded-full bg-white border border-botanical-sage/40 text-botanical-charcoal">Nhà Trai</button>
-            <button onclick="setWishFilter('Khách Nhà Gái')" id="wf-bride" class="px-3 py-1 rounded-full bg-white border border-botanical-blush text-botanical-charcoal">Nhà Gái</button>
-          </div>
-        </div>
-
-        <div id="wishes-feed" class="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[420px] overflow-y-auto pr-1 custom-scroll">
-          <!-- Populated dynamically with Heart Like Buttons -->
-        </div>
       </div>
     </section>
 
