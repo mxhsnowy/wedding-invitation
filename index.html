@@ -691,7 +691,7 @@
           <div class="w-44 h-44 p-2.5 rounded-xl border border-dashed border-botanical-sage bg-botanical-ivory mb-4">
             <img 
               id="groom-qr-img"
-              src="https://res.cloudinary.com/w2k84d9a/image/upload/v1794750464/huy-vietqr.png" 
+              src="https://img.vietqr.io/image/VCB-1043227223-compact2.png?addInfo=Chuc%20mung%20hanh%20phuc%20Huy%20Hien&amp;accountName=MANH%20XUAN%20HUY" 
               alt="VietQR Chú Rể Mạnh Xuân Huy" 
               class="w-full h-full object-contain rounded"
             />
@@ -713,7 +713,7 @@
           <div class="w-44 h-44 p-2.5 rounded-xl border border-dashed border-botanical-blush bg-botanical-softpink/40 mb-4">
             <img 
               id="bride-qr-img"
-              src="https://res.cloudinary.com/w2k84d9a/image/upload/v1794750463/hien-vietqr.png" 
+              src="https://img.vietqr.io/image/BIDV-4504848044-compact2.png?addInfo=Chuc%20mung%20hanh%20phuc%20Huy%20Hien&amp;accountName=VU%20THU%20HIEN" 
               alt="VietQR Cô Dâu Vũ Thu Hiền" 
               class="w-full h-full object-contain rounded"
             />
@@ -1370,10 +1370,10 @@
 
     // --- 8. DYNAMIC VIETQR CUSTOMIZER & GUEST LINK GENERATOR ---
     function updateDynamicVietQR() {
-      const memo = document.getElementById('qr-custom-memo').value.trim() || "Chuc mung hanh phuc";
+      const memo = document.getElementById('qr-custom-memo').value.trim() || "Chuc mung hanh phuc Huy Hien";
       const encoded = encodeURIComponent(memo);
-      document.getElementById('groom-qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=VIETQR%7CVietcombank%7C1043227223%7CMANH%20XUAN%20HUY%7C${encoded}`;
-      document.getElementById('bride-qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=VIETQR%7CBIDV%7C4504848044%7CVU%20THU%20HIEN%7C${encoded}`;
+      document.getElementById('groom-qr-img').src = `https://img.vietqr.io/image/VCB-1043227223-compact2.png?addInfo=${encoded}&accountName=MANH%20XUAN%20HUY`;
+      document.getElementById('bride-qr-img').src = `https://img.vietqr.io/image/BIDV-4504848044-compact2.png?addInfo=${encoded}&accountName=VU%20THU%20HIEN`;
       showToast("Đã cập nhật lời nhắn trên mã QR Mừng Cưới!");
     }
 
