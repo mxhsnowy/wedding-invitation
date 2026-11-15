@@ -69,10 +69,12 @@
       pointer-events: none;
     }
 
-    /* Seamless Feather Mask for Hero Header Image */
-    .hero-header-seamless {
-      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 58%, rgba(0, 0, 0, 0.72) 78%, rgba(0, 0, 0, 0.25) 92%, rgba(0, 0, 0, 0) 100%);
-      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 58%, rgba(0, 0, 0, 0.72) 78%, rgba(0, 0, 0, 0.25) 92%, rgba(0, 0, 0, 0) 100%);
+    /* Progressive Bottom Blur Overlay at the End of Hero Header Image */
+    .hero-bottom-blur {
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 45%, rgba(0, 0, 0, 1) 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 45%, rgba(0, 0, 0, 1) 100%);
     }
 
     /* Hardware-Accelerated Liquid Glass Foreground (Zero SVG filter lag) */
@@ -209,16 +211,18 @@
   </nav>
 
   <!-- =====================================================================
-       HERO HEADER BANNER IMAGE (SEAMLESS TRANSITION TO FOREGROUND BELOW)
+       HERO HEADER BANNER IMAGE (WITH BLUR AT THE BOTTOM END)
        ===================================================================== -->
-  <div class="w-full relative z-10 overflow-hidden hero-header-seamless pointer-events-none select-none">
+  <div class="w-full relative z-20 overflow-hidden">
     <img
       src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto/v1794756693/usiylzficzb12o0mxd9g.webp"
       alt="Mạnh Huy &amp; Thu Hiền - Ảnh Cưới Header"
       fetchpriority="high"
       decoding="async"
-      class="w-full h-auto max-h-[78vh] object-cover block"
+      class="w-full h-auto max-h-[75vh] object-cover block"
     />
+    <!-- Bottom Blur Band at the End of Header Image -->
+    <div class="absolute inset-x-0 bottom-0 h-16 sm:h-28 hero-bottom-blur pointer-events-none"></div>
   </div>
 
   <!-- =====================================================================
@@ -260,7 +264,7 @@
   <!-- =====================================================================
        MAIN INVITATION SHEET CONTAINER (LIQUID GLASS FOREGROUND)
        ===================================================================== -->
-  <main class="max-w-4xl mx-auto -mt-14 sm:-mt-28 mb-0 sm:mb-10 liquid-glass sm:rounded-[36px] overflow-hidden relative z-20">
+  <main class="max-w-4xl mx-auto my-0 sm:my-8 liquid-glass sm:rounded-[36px] overflow-hidden relative z-20">
 
     <!-- TOP-RIGHT WATERCOLOR BOTANICAL ROSE & EUCALYPTUS SVG -->
     <div class="absolute top-0 right-0 w-60 sm:w-80 md:w-96 pointer-events-none z-10 overflow-hidden">
