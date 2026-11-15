@@ -53,11 +53,9 @@
     /* Whole-page Rose Garden background */
     body {
       background-color: #FAF9F5;
-      background-image:
-        linear-gradient(180deg, rgba(253, 242, 242, 0.35) 0%, rgba(250, 249, 245, 0.25) 50%, rgba(230, 236, 228, 0.35) 100%),
-        url('https://images.unsplash.com/photo-1559563362-c667ba5f5480?auto=format&fit=crop&w=2000&q=85');
+      background-image: url('./assets/background.jpg');
       background-size: cover;
-      background-position: center center;
+      background-position: center top;
       background-attachment: fixed;
       background-repeat: no-repeat;
       color: #333A32;
@@ -599,9 +597,9 @@
           <i data-lucide="chevron-right" class="w-5 h-5"></i>
         </button>
 
-        <!-- 20-Photo 3x3 Horizontal Scroll Container -->
+        <!-- 27-Photo 3x3 Horizontal Scroll Container -->
         <div id="gallery-grid" class="grid grid-rows-3 grid-flow-col auto-cols-[calc((100%-1.5rem)/3)] sm:auto-cols-[calc((100%-2.5rem)/3)] gap-3 sm:gap-5 overflow-x-auto snap-x snap-mandatory pb-4 pt-1 px-1 custom-scroll scroll-smooth">
-          <!-- Item 0 -->
+          <!-- Item 0: KWAN4244.webp -->
           <div data-category="nature" onclick="openLightbox(0)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-0"
@@ -610,19 +608,17 @@
               loading="lazy"
               decoding="async"
               fetchpriority="high"
-              src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742336/img1.webp"
-              srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742336/img1.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742336/img1.webp 600w"
-              sizes="(max-width: 640px) 30vw, 240px"
-              data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742336/img1.webp"
+              src="./assets/KWAN4244.webp"
+              data-full-src="./assets/KWAN4244.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Ngượng ngùng của cô dâu"
+              alt="Khoảnh khắc hạnh phúc - KWAN4244"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 1 -->
+          <!-- Item 1: KWAN4282.webp -->
           <div data-category="nature" onclick="openLightbox(1)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-1"
@@ -631,19 +627,17 @@
               loading="lazy"
               decoding="async"
               fetchpriority="high"
-              src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742327/img2.webp"
-              srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742327/img2.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742327/img2.webp 600w"
-              sizes="(max-width: 640px) 30vw, 240px"
-              data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742327/img2.webp"
+              src="./assets/KWAN4282.webp"
+              data-full-src="./assets/KWAN4282.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Lãng mạn dưới khung trời và thiên nhiên"
+              alt="Khoảnh khắc hạnh phúc - KWAN4282"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 2 -->
+          <!-- Item 2: KWAN4352.webp -->
           <div data-category="portrait" onclick="openLightbox(2)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-2"
@@ -651,19 +645,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742328/img3.webp"
-              srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742328/img3.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742328/img3.webp 600w"
-              sizes="(max-width: 640px) 30vw, 240px"
-              data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742328/img3.webp"
+              src="./assets/KWAN4352.webp"
+              data-full-src="./assets/KWAN4352.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Ánh chiều tà đầy tình yêu"
+              alt="Khoảnh khắc hạnh phúc - KWAN4352"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 3 -->
+          <!-- Item 3: KWAN4359.webp -->
           <div data-category="nature" onclick="openLightbox(3)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-3"
@@ -671,19 +663,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742327/img4.webp"
-              srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742327/img4.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742327/img4.webp 600w"
-              sizes="(max-width: 640px) 30vw, 240px"
-              data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742327/img4.webp"
+              src="./assets/KWAN4359.webp"
+              data-full-src="./assets/KWAN4359.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Bên nhau dưới bầu trời đẹp"
+              alt="Khoảnh khắc hạnh phúc - KWAN4359"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 4 -->
+          <!-- Item 4: KWAN4435.webp -->
           <div data-category="portrait" onclick="openLightbox(4)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-4"
@@ -691,19 +681,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742333/img5.webp"
-              srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742333/img5.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742333/img5.webp 600w"
-              sizes="(max-width: 640px) 30vw, 240px"
-              data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742333/img5.webp"
+              src="./assets/KWAN4435.webp"
+              data-full-src="./assets/KWAN4435.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Nương tựa vào nhau"
+              alt="Khoảnh khắc hạnh phúc - KWAN4435"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 5 -->
+          <!-- Item 5: KWAN4482.webp -->
           <div data-category="night" onclick="openLightbox(5)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-5"
@@ -711,19 +699,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742327/img6.webp"
-              srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742327/img6.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742327/img6.webp 600w"
-              sizes="(max-width: 640px) 30vw, 240px"
-              data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742327/img6.webp"
+              src="./assets/KWAN4482.webp"
+              data-full-src="./assets/KWAN4482.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Đêm tiệc cưới hạnh phúc"
+              alt="Khoảnh khắc hạnh phúc - KWAN4482"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 6 -->
+          <!-- Item 6: KWAN4555.webp -->
           <div data-category="nature" onclick="openLightbox(6)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-6"
@@ -731,19 +717,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794756418/rwtyhykd1f3uzekji2iu.webp"
-              srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794756418/rwtyhykd1f3uzekji2iu.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794756418/rwtyhykd1f3uzekji2iu.webp 600w"
-              sizes="(max-width: 640px) 30vw, 240px"
-              data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794756418/rwtyhykd1f3uzekji2iu.webp"
+              src="./assets/KWAN4555.webp"
+              data-full-src="./assets/KWAN4555.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Khung cảnh thơ mộng ngày chung đôi"
+              alt="Khoảnh khắc hạnh phúc - KWAN4555"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 7 -->
+          <!-- Item 7: KWAN4661.webp -->
           <div data-category="portrait" onclick="openLightbox(7)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-7"
@@ -751,19 +735,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794756693/usiylzficzb12o0mxd9g.webp"
-              srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794756693/usiylzficzb12o0mxd9g.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794756693/usiylzficzb12o0mxd9g.webp 600w"
-              sizes="(max-width: 640px) 30vw, 240px"
-              data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794756693/usiylzficzb12o0mxd9g.webp"
+              src="./assets/KWAN4661.webp"
+              data-full-src="./assets/KWAN4661.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Khoảnh khắc ngọt ngào bên nhau"
+              alt="Khoảnh khắc hạnh phúc - KWAN4661"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 8 -->
+          <!-- Item 8: KWAN4719.webp -->
           <div data-category="nature" onclick="openLightbox(8)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-8"
@@ -771,16 +753,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src=""
+              src="./assets/KWAN4719.webp"
+              data-full-src="./assets/KWAN4719.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Bình minh sương sớm bên hồ"
+              alt="Khoảnh khắc hạnh phúc - KWAN4719"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 9 -->
+          <!-- Item 9: KWAN4765.webp -->
           <div data-category="portrait" onclick="openLightbox(9)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-9"
@@ -788,16 +771,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src=""
+              src="./assets/KWAN4765.webp"
+              data-full-src="./assets/KWAN4765.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Lời hẹn ước trăm năm"
+              alt="Khoảnh khắc hạnh phúc - KWAN4765"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 10 -->
+          <!-- Item 10: KWAN4779.webp -->
           <div data-category="night" onclick="openLightbox(10)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-10"
@@ -805,17 +789,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80"
-              data-full-src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1600&q=85"
+              src="./assets/KWAN4779.webp"
+              data-full-src="./assets/KWAN4779.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Bước chung đôi dưới ánh đèn lễ đường"
+              alt="Khoảnh khắc hạnh phúc - KWAN4779"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 11 -->
+          <!-- Item 11: KWAN4804.webp -->
           <div data-category="nature" onclick="openLightbox(11)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-11"
@@ -823,17 +807,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80"
-              data-full-src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1600&q=85"
+              src="./assets/KWAN4804.webp"
+              data-full-src="./assets/KWAN4804.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Chiều thu dịu dàng nơi phố cổ"
+              alt="Khoảnh khắc hạnh phúc - KWAN4804"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 12 -->
+          <!-- Item 12: KWAN4834.webp -->
           <div data-category="portrait" onclick="openLightbox(12)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-12"
@@ -841,17 +825,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=600&q=80"
-              data-full-src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=1600&q=85"
+              src="./assets/KWAN4834.webp"
+              data-full-src="./assets/KWAN4834.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Nụ cười rạng rỡ ngày hạnh phúc"
+              alt="Khoảnh khắc hạnh phúc - KWAN4834"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 13 -->
+          <!-- Item 13: KWAN4883.webp -->
           <div data-category="nature" onclick="openLightbox(13)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-13"
@@ -859,17 +843,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=600&q=80"
-              data-full-src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1600&q=85"
+              src="./assets/KWAN4883.webp"
+              data-full-src="./assets/KWAN4883.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Nắm tay nhau đi khắp thế gian"
+              alt="Khoảnh khắc hạnh phúc - KWAN4883"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 14 -->
+          <!-- Item 14: KWAN4901.webp -->
           <div data-category="night" onclick="openLightbox(14)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-14"
@@ -877,17 +861,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=600&q=80"
-              data-full-src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1600&q=85"
+              src="./assets/KWAN4901.webp"
+              data-full-src="./assets/KWAN4901.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Phút giây lắng đọng trong tiệc tối"
+              alt="Khoảnh khắc hạnh phúc - KWAN4901"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 15 -->
+          <!-- Item 15: KWAN4984.webp -->
           <div data-category="portrait" onclick="openLightbox(15)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-15"
@@ -895,17 +879,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=600&q=80"
-              data-full-src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1600&q=85"
+              src="./assets/KWAN4984.webp"
+              data-full-src="./assets/KWAN4984.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Hoa cưới & Nhẫn đôi"
+              alt="Khoảnh khắc hạnh phúc - KWAN4984"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 16 -->
+          <!-- Item 16: KWAN5035.webp -->
           <div data-category="nature" onclick="openLightbox(16)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-16"
@@ -913,17 +897,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=600&q=80"
-              data-full-src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=85"
+              src="./assets/KWAN5035.webp"
+              data-full-src="./assets/KWAN5035.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Sắc hoa ngập tràn lối đi"
+              alt="Khoảnh khắc hạnh phúc - KWAN5035"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 17 -->
+          <!-- Item 17: KWAN5065.webp -->
           <div data-category="night" onclick="openLightbox(17)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-17"
@@ -931,17 +915,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=600&q=80"
-              data-full-src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=1600&q=85"
+              src="./assets/KWAN5065.webp"
+              data-full-src="./assets/KWAN5065.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Trao nhau chiếc nhẫn ước thề"
+              alt="Khoảnh khắc hạnh phúc - KWAN5065"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 18 -->
+          <!-- Item 18: KWAN5190.webp -->
           <div data-category="portrait" onclick="openLightbox(18)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-18"
@@ -949,17 +933,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=600&q=80"
-              data-full-src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=1600&q=85"
+              src="./assets/KWAN5190.webp"
+              data-full-src="./assets/KWAN5190.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Ánh nhìn trìu mến trao nhau"
+              alt="Khoảnh khắc hạnh phúc - KWAN5190"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 19 -->
+          <!-- Item 19: KWAN5230.webp -->
           <div data-category="night" onclick="openLightbox(19)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-19"
@@ -967,17 +951,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=600&q=80"
-              data-full-src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=1600&q=85"
+              src="./assets/KWAN5230.webp"
+              data-full-src="./assets/KWAN5230.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Không gian tiệc cưới lung linh"
+              alt="Khoảnh khắc hạnh phúc - KWAN5230"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 20 -->
+          <!-- Item 20: KWAN5235.webp -->
           <div data-category="nature" onclick="openLightbox(20)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-20"
@@ -985,17 +969,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=600&q=80"
-              data-full-src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1600&q=85"
+              src="./assets/KWAN5235.webp"
+              data-full-src="./assets/KWAN5235.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Hương hoa cỏ mùa xuân bên thềm"
+              alt="Khoảnh khắc hạnh phúc - KWAN5235"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 21 -->
+          <!-- Item 21: KWAN5290.webp -->
           <div data-category="portrait" onclick="openLightbox(21)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-21"
@@ -1003,17 +987,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=600&q=80"
-              data-full-src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1600&q=85"
+              src="./assets/KWAN5290.webp"
+              data-full-src="./assets/KWAN5290.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Cái nắm tay thật chặt ngày cưới"
+              alt="Khoảnh khắc hạnh phúc - KWAN5290"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 22 -->
+          <!-- Item 22: KWAN5331.webp -->
           <div data-category="night" onclick="openLightbox(22)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-22"
@@ -1021,17 +1005,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=600&q=80"
-              data-full-src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1600&q=85"
+              src="./assets/KWAN5331.webp"
+              data-full-src="./assets/KWAN5331.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Bàn tiệc hoa tươi dưới ánh nến"
+              alt="Khoảnh khắc hạnh phúc - KWAN5331"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 23 -->
+          <!-- Item 23: KWAN5356.webp -->
           <div data-category="night" onclick="openLightbox(23)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-23"
@@ -1039,17 +1023,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=600&q=80"
-              data-full-src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1600&q=85"
+              src="./assets/KWAN5356.webp"
+              data-full-src="./assets/KWAN5356.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Nâng ly chúc mừng hạnh phúc đôi trẻ"
+              alt="Khoảnh khắc hạnh phúc - KWAN5356"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 24 -->
+          <!-- Item 24: KWAN5408.webp -->
           <div data-category="portrait" onclick="openLightbox(24)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-24"
@@ -1057,17 +1041,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&fit=crop&w=600&q=80"
-              data-full-src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&fit=crop&w=1600&q=85"
+              src="./assets/KWAN5408.webp"
+              data-full-src="./assets/KWAN5408.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Khoảnh khắc dịu dàng của cô dâu chú rể"
+              alt="Khoảnh khắc hạnh phúc - KWAN5408"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 25 -->
+          <!-- Item 25: KWAN5551.webp -->
           <div data-category="night" onclick="openLightbox(25)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-25"
@@ -1075,17 +1059,17 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=600&q=80"
-              data-full-src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=1600&q=85"
+              src="./assets/KWAN5551.webp"
+              data-full-src="./assets/KWAN5551.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Điệu nhảy đầu tiên trong đêm tiệc"
+              alt="Khoảnh khắc hạnh phúc - KWAN5551"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
-          <!-- Item 26 -->
+          <!-- Item 26: img1.webp -->
           <div data-category="night" onclick="openLightbox(26)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
             <img
               id="gallery-img-26"
@@ -1093,10 +1077,10 @@
               height="800"
               loading="lazy"
               decoding="async"
-              src="https://images.unsplash.com/photo-1525772764200-be829a350797?auto=format&fit=crop&w=600&q=80"
-              data-full-src="https://images.unsplash.com/photo-1525772764200-be829a350797?auto=format&fit=crop&w=1600&q=85"
+              src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742336/img1.webp"
+              data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742336/img1.webp"
               onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-              alt="Pháo sáng chúc phúc đêm chung đôi"
+              alt="Khoảnh khắc hạnh phúc ngày chung đôi"
               class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
