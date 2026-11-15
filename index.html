@@ -50,12 +50,13 @@
   </script>
 
   <style>
-    /* Subtle paper grain texture */
+    /* Whole-page scrolling background image */
     body {
       background-color: #FAF9F5;
-      background-image: radial-gradient(#8FA38D 0.45px, transparent 0.45px), radial-gradient(#F4C2C2 0.45px, #FAF9F5 0.45px);
-      background-size: 38px 38px;
-      background-position: 0 0, 19px 19px;
+      background-image: url('https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto/v1794756418/rwtyhykd1f3uzekji2iu.webp');
+      background-size: 100% auto;
+      background-position: top center;
+      background-repeat: repeat-y;
       color: #333A32;
     }
 
@@ -183,7 +184,7 @@
   <!-- =====================================================================
        MAIN INVITATION SHEET CONTAINER
        ===================================================================== -->
-  <main class="max-w-4xl mx-auto my-0 sm:my-8 bg-[#FAF9F5] sm:rounded-[36px] sm:shadow-[0_25px_80px_rgba(79,99,78,0.14)] sm:border border-botanical-sage/30 overflow-hidden relative">
+  <main class="max-w-4xl mx-auto my-0 sm:my-8 bg-[#FAF9F5]/80 backdrop-blur-sm sm:rounded-[36px] sm:shadow-[0_25px_80px_rgba(79,99,78,0.18)] sm:border border-botanical-sage/30 overflow-hidden relative">
 
     <!-- TOP-RIGHT WATERCOLOR BOTANICAL ROSE & EUCALYPTUS SVG -->
     <div class="absolute top-0 right-0 w-60 sm:w-80 md:w-96 pointer-events-none z-10 overflow-hidden">
@@ -268,11 +269,22 @@
         (Tức ngày 21 tháng 10 năm Bính Ngọ)
       </p>
 
-      <p class="font-serif italic text-base sm:text-lg text-botanical-charcoal/75 max-w-lg mx-auto" data-i18n="hero_quote">
+      <p class="font-serif italic text-base sm:text-lg text-botanical-charcoal/75 max-w-lg mx-auto mb-8" data-i18n="hero_quote">
         "Giữa muôn vàn sắc hoa của đất trời Hà Nội, chúng mình tìm thấy bình yên trọn vẹn trong ánh mắt nhau."
       </p>
 
-      <!-- Featured 3-Panel Triptych right inside Hero (matching botanical mockup) -->
+      <!-- Hero Header Image -->
+      <div class="max-w-2xl mx-auto px-2 sm:px-4">
+        <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border-4 border-white/90 bg-botanical-lightsage">
+          <img
+            src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1200/v1794756693/usiylzficzb12o0mxd9g.webp"
+            alt="Mạnh Huy &amp; Thu Hiền - Ảnh Cưới"
+            fetchpriority="high"
+            decoding="async"
+            class="w-full h-auto max-h-[540px] object-cover"
+          />
+        </div>
+      </div>
     </header>
 
     <!-- =====================================================================
@@ -663,7 +675,7 @@
     <!-- =====================================================================
          SECTION 9: DYNAMIC VIETQR WEDDING GIFT BOX
          ===================================================================== -->
-    <section id="mung-cuoi" class="relative z-20 px-6 sm:px-14 py-14 bg-[#FAF9F5] border-t border-botanical-sage/25">
+    <section id="mung-cuoi" class="relative z-20 px-6 sm:px-14 py-14 bg-[#FAF9F5]/65 border-t border-botanical-sage/25">
       <div class="text-center mb-8">
         <i data-lucide="gift" class="w-7 h-7 text-botanical-darksage mx-auto mb-2"></i>
         <h2 class="font-serif text-3xl sm:text-4xl text-botanical-charcoal font-semibold mb-2" data-i18n="gift_title">Hộp Mừng Cưới Tinh Tế</h2>
