@@ -1276,13 +1276,16 @@
     }
 
     function renderWishesFeed() {
+      const countEl = document.getElementById('wishes-count');
+      const feed = document.getElementById('wishes-feed');
+      if (!countEl || !feed) return;
+
       const allWishes = getStoredWishes();
       const filtered = currentWishFilter === 'all'
         ? allWishes
         : allWishes.filter(w => w.relation === currentWishFilter);
 
-      document.getElementById('wishes-count').innerText = allWishes.length;
-      const feed = document.getElementById('wishes-feed');
+      countEl.innerText = allWishes.length;
       feed.innerHTML = '';
 
       filtered.forEach(item => {
@@ -1314,46 +1317,49 @@
       });
     }
 
-    document.getElementById('wedding-rsvp-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const btn = document.getElementById('rsvp-submit-btn');
-      const name = document.getElementById('rsvp-name').value.trim();
-      if (!name) return;
+    const rsvpForm = document.getElementById('wedding-rsvp-form');
+    if (rsvpForm) {
+      rsvpForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('rsvp-submit-btn');
+        const name = document.getElementById('rsvp-name').value.trim();
+        if (!name) return;
 
-      btn.disabled = true;
-      btn.innerText = "Đang lưu xác nhận...";
+        btn.disabled = true;
+        btn.innerText = "Đang lưu xác nhận...";
 
-      const payload = {
-        id: 'w_' + Date.now(),
-        name,
-        phone: document.getElementById('rsvp-phone').value.trim(),
-        relation: document.getElementById('rsvp-relation').value,
-        attending: document.getElementById('rsvp-attending').value,
-        guests: document.getElementById('rsvp-guests').value,
-        dietary: document.getElementById('rsvp-dietary').value,
-        transport: document.getElementById('rsvp-transport').value,
-        table: document.getElementById('rsvp-table').value,
-        wishes: document.getElementById('rsvp-wishes').value.trim() || "Chúc hai bạn trăm năm hạnh phúc, viên mãn bền lâu!",
-        likes: 1,
-        time: "Vừa xong"
-      };
+        const payload = {
+          id: 'w_' + Date.now(),
+          name,
+          phone: document.getElementById('rsvp-phone')?.value.trim() || '',
+          relation: document.getElementById('rsvp-relation')?.value || '',
+          attending: document.getElementById('rsvp-attending')?.value || '',
+          guests: document.getElementById('rsvp-guests')?.value || '',
+          dietary: document.getElementById('rsvp-dietary')?.value || '',
+          transport: document.getElementById('rsvp-transport')?.value || '',
+          table: document.getElementById('rsvp-table')?.value || '',
+          wishes: document.getElementById('rsvp-wishes')?.value.trim() || "Chúc hai bạn trăm năm hạnh phúc, viên mãn bền lâu!",
+          likes: 1,
+          time: "Vừa xong"
+        };
 
-      const list = getStoredWishes();
-      list.unshift(payload);
-      localStorage.setItem('botanical_complex_wishes_v2', JSON.stringify(list));
-      renderWishesFeed();
+        const list = getStoredWishes();
+        list.unshift(payload);
+        localStorage.setItem('botanical_complex_wishes_v2', JSON.stringify(list));
+        renderWishesFeed();
 
-      if (SCRIPT_URL && SCRIPT_URL.startsWith('https://script.google.com')) {
-        fetch(SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        }).finally(() => finishRsvp(btn, payload.table));
-      } else {
-        setTimeout(() => finishRsvp(btn, payload.table), 400);
-      }
-    });
+        if (SCRIPT_URL && SCRIPT_URL.startsWith('https://script.google.com')) {
+          fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          }).finally(() => finishRsvp(btn, payload.table));
+        } else {
+          setTimeout(() => finishRsvp(btn, payload.table), 400);
+        }
+      });
+    }
 
     function finishRsvp(btn, table) {
       btn.disabled = false;
@@ -1626,7 +1632,7 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-      lucide.createIcons();
+      if (window.lucide) lucide.createIcons();
       initGuestGreeting();
       renderLoveTimeline();
       renderWishesFeed();
@@ -1636,6 +1642,17 @@
           img.parentElement.classList.remove('animate-pulse');
         }
       });
+
+      // Auto-start background music on first user interaction (since envelope splash was removed)
+      const autoStartMusicOnce = (e) => {
+        if (!e.target.closest('#music-btn') && !isPlayingMusic) {
+          startBackgroundMusic();
+        }
+        window.removeEventListener('click', autoStartMusicOnce);
+        window.removeEventListener('touchstart', autoStartMusicOnce);
+      };
+      window.addEventListener('click', autoStartMusicOnce, { once: true });
+      window.addEventListener('touchstart', autoStartMusicOnce, { once: true });
     });
   </script>
 </body>
