@@ -570,9 +570,9 @@
       </div>
 
       <!-- Category Filter Pills -->
-      <div class="flex flex-wrap items-center justify-center gap-2 mb-7">
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
         <button onclick="filterGallery('all')" data-filter="all" class="gallery-filter-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-botanical-darksage text-white shadow-xs transition">
-          Tất cả (6)
+          Tất cả (20)
         </button>
         <button onclick="filterGallery('nature')" data-filter="nature" class="gallery-filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-botanical-charcoal border border-botanical-sage/40 hover:border-botanical-darksage transition">
           Ngoại Cảnh
@@ -585,128 +585,396 @@
         </button>
       </div>
 
-      <!-- 6-Photo Filterable Grid -->
-      <div id="gallery-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5 max-w-3xl mx-auto">
-        <!-- Item 0 -->
-        <div data-category="nature" onclick="openLightbox(0)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
-          <img
-            id="gallery-img-0"
-            width="600"
-            height="800"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="high"
-            src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742336/img1.webp"
-            srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742336/img1.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742336/img1.webp 600w"
-            sizes="(max-width: 640px) 46vw, 250px"
-            data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742336/img1.webp"
-            onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-            alt="Ngượng ngùng của cô dâu"
-            class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
-          />
-          <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+      <!-- Horizontal Carousel Navigation & 20-Photo Scrollable Strip -->
+      <div class="relative max-w-3xl mx-auto group/carousel">
+        <!-- Left Scroll Button -->
+        <button onclick="scrollGallery(-1)" aria-label="Cuộn sang trái" class="hidden sm:flex absolute -left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/90 hover:bg-white text-botanical-darksage shadow-md border border-botanical-sage/40 items-center justify-center transition hover:scale-105">
+          <i data-lucide="chevron-left" class="w-5 h-5"></i>
+        </button>
+        <!-- Right Scroll Button -->
+        <button onclick="scrollGallery(1)" aria-label="Cuộn sang phải" class="hidden sm:flex absolute -right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/90 hover:bg-white text-botanical-darksage shadow-md border border-botanical-sage/40 items-center justify-center transition hover:scale-105">
+          <i data-lucide="chevron-right" class="w-5 h-5"></i>
+        </button>
+
+        <!-- 20-Photo Horizontal Scroll Container -->
+        <div id="gallery-grid" class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 pt-1 px-1 custom-scroll scroll-smooth">
+          <!-- Item 0 -->
+          <div data-category="nature" onclick="openLightbox(0)" class="gallery-card shrink-0 w-56 sm:w-64 aspect-[3/4] snap-center group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+            <img
+              id="gallery-img-0"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              fetchpriority="high"
+              src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742336/img1.webp"
+              srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742336/img1.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742336/img1.webp 600w"
+              sizes="(max-width: 640px) 224px, 256px"
+              data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742336/img1.webp"
+              onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+              alt="Ngượng ngùng của cô dâu"
+              class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+            />
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+            </div>
           </div>
-        </div>
-        <!-- Item 1 -->
-        <div data-category="nature" onclick="openLightbox(1)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
-          <img
-            id="gallery-img-1"
-            width="600"
-            height="800"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="high"
-            src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742327/img2.webp"
-            srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742327/img2.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742327/img2.webp 600w"
-            sizes="(max-width: 640px) 46vw, 250px"
-            data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742327/img2.webp"
-            onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-            alt="Lãng mạn dưới khung trời và thiên nhiên"
-            class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
-          />
-          <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+          <!-- Item 1 -->
+          <div data-category="nature" onclick="openLightbox(1)" class="gallery-card shrink-0 w-56 sm:w-64 aspect-[3/4] snap-center group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+            <img
+              id="gallery-img-1"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              fetchpriority="high"
+              src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742327/img2.webp"
+              srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742327/img2.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742327/img2.webp 600w"
+              sizes="(max-width: 640px) 224px, 256px"
+              data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742327/img2.webp"
+              onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+              alt="Lãng mạn dưới khung trời và thiên nhiên"
+              class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+            />
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+            </div>
           </div>
-        </div>
-        <!-- Item 2 -->
-        <div data-category="portrait" onclick="openLightbox(2)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
-          <img
-            id="gallery-img-2"
-            width="600"
-            height="800"
-            loading="lazy"
-            decoding="async"
-            src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742328/img3.webp"
-            srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742328/img3.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742328/img3.webp 600w"
-            sizes="(max-width: 640px) 46vw, 250px"
-            data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742328/img3.webp"
-            onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-            alt="Ánh chiều tà đầy tình yêu"
-            class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
-          />
-          <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+          <!-- Item 2 -->
+          <div data-category="portrait" onclick="openLightbox(2)" class="gallery-card shrink-0 w-56 sm:w-64 aspect-[3/4] snap-center group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+            <img
+              id="gallery-img-2"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742328/img3.webp"
+              srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742328/img3.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742328/img3.webp 600w"
+              sizes="(max-width: 640px) 224px, 256px"
+              data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742328/img3.webp"
+              onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+              alt="Ánh chiều tà đầy tình yêu"
+              class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+            />
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+            </div>
           </div>
-        </div>
-        <!-- Item 3 -->
-        <div data-category="nature" onclick="openLightbox(3)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
-          <img
-            id="gallery-img-3"
-            width="600"
-            height="800"
-            loading="lazy"
-            decoding="async"
-            src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742327/img4.webp"
-            srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742327/img4.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742327/img4.webp 600w"
-            sizes="(max-width: 640px) 46vw, 250px"
-            data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742327/img4.webp"
-            onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-            alt="Bên nhau dưới bầu trời đẹp"
-            class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
-          />
-          <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+          <!-- Item 3 -->
+          <div data-category="nature" onclick="openLightbox(3)" class="gallery-card shrink-0 w-56 sm:w-64 aspect-[3/4] snap-center group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+            <img
+              id="gallery-img-3"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742327/img4.webp"
+              srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742327/img4.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742327/img4.webp 600w"
+              sizes="(max-width: 640px) 224px, 256px"
+              data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742327/img4.webp"
+              onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+              alt="Bên nhau dưới bầu trời đẹp"
+              class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+            />
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+            </div>
           </div>
-        </div>
-        <!-- Item 4 -->
-        <div data-category="portrait" onclick="openLightbox(4)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
-          <img
-            id="gallery-img-4"
-            width="600"
-            height="800"
-            loading="lazy"
-            decoding="async"
-            src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742333/img5.webp"
-            srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742333/img5.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742333/img5.webp 600w"
-            sizes="(max-width: 640px) 46vw, 250px"
-            data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742333/img5.webp"
-            onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-            alt="Nương tựa vào nhau"
-            class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
-          />
-          <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+          <!-- Item 4 -->
+          <div data-category="portrait" onclick="openLightbox(4)" class="gallery-card shrink-0 w-56 sm:w-64 aspect-[3/4] snap-center group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+            <img
+              id="gallery-img-4"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742333/img5.webp"
+              srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742333/img5.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742333/img5.webp 600w"
+              sizes="(max-width: 640px) 224px, 256px"
+              data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742333/img5.webp"
+              onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+              alt="Nương tựa vào nhau"
+              class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+            />
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+            </div>
           </div>
-        </div>
-        <!-- Item 5 -->
-        <div data-category="night" onclick="openLightbox(5)" class="gallery-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
-          <img
-            id="gallery-img-5"
-            width="600"
-            height="800"
-            loading="lazy"
-            decoding="async"
-            src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742327/img6.webp"
-            srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742327/img6.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742327/img6.webp 600w"
-            sizes="(max-width: 640px) 46vw, 250px"
-            data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742327/img6.webp"
-            onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
-            alt="Đêm tiệc cưới hạnh phúc"
-            class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
-          />
-          <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+          <!-- Item 5 -->
+          <div data-category="night" onclick="openLightbox(5)" class="gallery-card shrink-0 w-56 sm:w-64 aspect-[3/4] snap-center group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+            <img
+              id="gallery-img-5"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794742327/img6.webp"
+              srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794742327/img6.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794742327/img6.webp 600w"
+              sizes="(max-width: 640px) 224px, 256px"
+              data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794742327/img6.webp"
+              onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+              alt="Đêm tiệc cưới hạnh phúc"
+              class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+            />
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+            </div>
+          </div>
+          <!-- Item 6 -->
+          <div data-category="nature" onclick="openLightbox(6)" class="gallery-card shrink-0 w-56 sm:w-64 aspect-[3/4] snap-center group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+            <img
+              id="gallery-img-6"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794756418/rwtyhykd1f3uzekji2iu.webp"
+              srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794756418/rwtyhykd1f3uzekji2iu.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794756418/rwtyhykd1f3uzekji2iu.webp 600w"
+              sizes="(max-width: 640px) 224px, 256px"
+              data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794756418/rwtyhykd1f3uzekji2iu.webp"
+              onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+              alt="Khung cảnh thơ mộng ngày chung đôi"
+              class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+            />
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+            </div>
+          </div>
+          <!-- Item 7 -->
+          <div data-category="portrait" onclick="openLightbox(7)" class="gallery-card shrink-0 w-56 sm:w-64 aspect-[3/4] snap-center group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+            <img
+              id="gallery-img-7"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_500,ar_3:4/v1794756693/usiylzficzb12o0mxd9g.webp"
+              srcset="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_360,ar_3:4/v1794756693/usiylzficzb12o0mxd9g.webp 360w, https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,c_fill,g_auto,w_600,ar_3:4/v1794756693/usiylzficzb12o0mxd9g.webp 600w"
+              sizes="(max-width: 640px) 224px, 256px"
+              data-full-src="https://res.cloudinary.com/w2k84d9a/image/upload/f_auto,q_auto,w_1600/v1794756693/usiylzficzb12o0mxd9g.webp"
+              onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+              alt="Khoảnh khắc ngọt ngào bên nhau"
+              class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+            />
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+            </div>
+          </div>
+          <!-- Item 8 -->
+          <div data-category="nature" onclick="openLightbox(8)" class="gallery-card shrink-0 w-56 sm:w-64 aspect-[3/4] snap-center group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+            <img
+              id="gallery-img-8"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80"
+              data-full-src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=85"
+              onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+              alt="Bình minh sương sớm bên hồ"
+              class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+            />
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+            </div>
+          </div>
+          <!-- Item 9 -->
+          <div data-category="portrait" onclick="openLightbox(9)" class="gallery-card shrink-0 w-56 sm:w-64 aspect-[3/4] snap-center group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+            <img
+              id="gallery-img-9"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80"
+              data-full-src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1600&q=85"
+              onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+              alt="Lời hẹn ước trăm năm"
+              class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+            />
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+            </div>
+          </div>
+          <!-- Item 10 -->
+          <div data-category="night" onclick="openLightbox(10)" class="gallery-card shrink-0 w-56 sm:w-64 aspect-[3/4] snap-center group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+            <img
+              id="gallery-img-10"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80"
+              data-full-src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1600&q=85"
+              onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+              alt="Bước chung đôi dưới ánh đèn lễ đường"
+              class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+            />
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+            </div>
+          </div>
+          <!-- Item 11 -->
+          <div data-category="nature" onclick="openLightbox(11)" class="gallery-card shrink-0 w-56 sm:w-64 aspect-[3/4] snap-center group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+            <img
+              id="gallery-img-11"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80"
+              data-full-src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1600&q=85"
+              onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+              alt="Chiều thu dịu dàng nơi phố cổ"
+              class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+            />
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+            </div>
+          </div>
+          <!-- Item 12 -->
+          <div data-category="portrait" onclick="openLightbox(12)" class="gallery-card shrink-0 w-56 sm:w-64 aspect-[3/4] snap-center group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+            <img
+              id="gallery-img-12"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=600&q=80"
+              data-full-src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=1600&q=85"
+              onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+              alt="Nụ cười rạng rỡ ngày hạnh phúc"
+              class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+            />
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+            </div>
+          </div>
+          <!-- Item 13 -->
+          <div data-category="nature" onclick="openLightbox(13)" class="gallery-card shrink-0 w-56 sm:w-64 aspect-[3/4] snap-center group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+            <img
+              id="gallery-img-13"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=600&q=80"
+              data-full-src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1600&q=85"
+              onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+              alt="Nắm tay nhau đi khắp thế gian"
+              class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+            />
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+            </div>
+          </div>
+          <!-- Item 14 -->
+          <div data-category="night" onclick="openLightbox(14)" class="gallery-card shrink-0 w-56 sm:w-64 aspect-[3/4] snap-center group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+            <img
+              id="gallery-img-14"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=600&q=80"
+              data-full-src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1600&q=85"
+              onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+              alt="Phút giây lắng đọng trong tiệc tối"
+              class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+            />
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+            </div>
+          </div>
+          <!-- Item 15 -->
+          <div data-category="portrait" onclick="openLightbox(15)" class="gallery-card shrink-0 w-56 sm:w-64 aspect-[3/4] snap-center group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+            <img
+              id="gallery-img-15"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=600&q=80"
+              data-full-src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1600&q=85"
+              onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+              alt="Hoa cưới & Nhẫn đôi"
+              class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+            />
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+            </div>
+          </div>
+          <!-- Item 16 -->
+          <div data-category="nature" onclick="openLightbox(16)" class="gallery-card shrink-0 w-56 sm:w-64 aspect-[3/4] snap-center group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+            <img
+              id="gallery-img-16"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=600&q=80"
+              data-full-src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=85"
+              onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+              alt="Sắc hoa ngập tràn lối đi"
+              class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+            />
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+            </div>
+          </div>
+          <!-- Item 17 -->
+          <div data-category="night" onclick="openLightbox(17)" class="gallery-card shrink-0 w-56 sm:w-64 aspect-[3/4] snap-center group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+            <img
+              id="gallery-img-17"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=600&q=80"
+              data-full-src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=1600&q=85"
+              onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+              alt="Trao nhau chiếc nhẫn ước thề"
+              class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+            />
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+            </div>
+          </div>
+          <!-- Item 18 -->
+          <div data-category="portrait" onclick="openLightbox(18)" class="gallery-card shrink-0 w-56 sm:w-64 aspect-[3/4] snap-center group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+            <img
+              id="gallery-img-18"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=600&q=80"
+              data-full-src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=1600&q=85"
+              onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+              alt="Ánh nhìn trìu mến trao nhau"
+              class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+            />
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+            </div>
+          </div>
+          <!-- Item 19 -->
+          <div data-category="night" onclick="openLightbox(19)" class="gallery-card shrink-0 w-56 sm:w-64 aspect-[3/4] snap-center group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage animate-pulse">
+            <img
+              id="gallery-img-19"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=600&q=80"
+              data-full-src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=1600&q=85"
+              onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse')"
+              alt="Không gian tiệc cưới lung linh"
+              class="w-full h-full object-cover opacity-0 group-hover:scale-105 transition-all duration-700"
+            />
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
+            </div>
           </div>
         </div>
       </div>
@@ -1155,15 +1423,36 @@
     }
 
     // --- 5. GALLERY FILTER, LIGHTBOX & LOCAL UPLOADER ---
+    const TOTAL_GALLERY_IMAGES = 20;
     const galleryCaptions = [
       "Nắng sớm bên thềm cỏ xanh mướt",
       "Thuyền hoa lãng mạn trên mặt hồ sương sớm",
       "Phút giây bình yên bên nhau giữa rừng cây",
       "Nắm tay nhau đi qua bao mùa hoa nở",
       "Sắc hồng phấn & lá khuynh diệp ngày chung đôi",
-      "Nhẫn cưới & Lời hẹn ước trăm năm"
+      "Nhẫn cưới & Lời hẹn ước trăm năm",
+      "Khung cảnh thơ mộng ngày chung đôi",
+      "Khoảnh khắc ngọt ngào bên nhau",
+      "Bình minh sương sớm bên hồ",
+      "Lời hẹn ước trăm năm",
+      "Bước chung đôi dưới ánh đèn lễ đường",
+      "Chiều thu dịu dàng nơi phố cổ",
+      "Nụ cười rạng rỡ ngày hạnh phúc",
+      "Nắm tay nhau đi khắp thế gian",
+      "Phút giây lắng đọng trong tiệc tối",
+      "Hoa cưới & Nhẫn đôi",
+      "Sắc hoa ngập tràn lối đi",
+      "Trao nhau chiếc nhẫn ước thề",
+      "Ánh nhìn trìu mến trao nhau",
+      "Không gian tiệc cưới lung linh"
     ];
     let currentSlideIndex = 0;
+
+    function scrollGallery(direction) {
+      const container = document.getElementById('gallery-grid');
+      if (!container) return;
+      container.scrollBy({ left: direction * 280, behavior: 'smooth' });
+    }
 
     function filterGallery(category) {
       document.querySelectorAll('.gallery-filter-btn').forEach(btn => {
@@ -1182,6 +1471,9 @@
           card.classList.add('hidden');
         }
       });
+
+      const container = document.getElementById('gallery-grid');
+      if (container) container.scrollTo({ left: 0, behavior: 'smooth' });
     }
 
     function openLightbox(index) {
@@ -1195,7 +1487,7 @@
     }
 
     function changeSlide(step) {
-      currentSlideIndex = (currentSlideIndex + step + 6) % 6;
+      currentSlideIndex = (currentSlideIndex + step + TOTAL_GALLERY_IMAGES) % TOTAL_GALLERY_IMAGES;
       updateLightboxView();
     }
 
@@ -1205,11 +1497,11 @@
       const modalCap = document.getElementById('lightbox-caption');
       if (imgEl) {
         modalImg.src = imgEl.getAttribute('data-full-src') || imgEl.src;
-        modalCap.innerText = galleryCaptions[currentSlideIndex] || '';
+        modalCap.innerText = galleryCaptions[currentSlideIndex] || imgEl.alt || '';
 
         // Preload adjacent high-res slides in background for instant navigation
         [-1, 1].forEach(offset => {
-          const adjIdx = (currentSlideIndex + offset + 6) % 6;
+          const adjIdx = (currentSlideIndex + offset + TOTAL_GALLERY_IMAGES) % TOTAL_GALLERY_IMAGES;
           const adjEl = document.getElementById(`gallery-img-${adjIdx}`);
           if (adjEl) {
             const preloadImg = new Image();
@@ -1222,7 +1514,7 @@
     function handleLocalPhotoPreview(event) {
       const files = Array.from(event.target.files);
       if (!files.length) return;
-      files.slice(0, 6).forEach((file, idx) => {
+      files.slice(0, TOTAL_GALLERY_IMAGES).forEach((file, idx) => {
         const reader = new FileReader();
         reader.onload = function(e) {
           const targetImg = document.getElementById(`gallery-img-${idx}`);
@@ -1234,7 +1526,7 @@
         };
         reader.readAsDataURL(file);
       });
-      showToast(`Đã cập nhật ${Math.min(files.length, 6)} ảnh cưới của bạn lên thiệp!`);
+      showToast(`Đã cập nhật ${Math.min(files.length, TOTAL_GALLERY_IMAGES)} ảnh cưới của bạn lên thiệp!`);
     }
 
     // --- 6. LIVE COUNTDOWN & .ICS CALENDAR GENERATOR ---
