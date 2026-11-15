@@ -154,11 +154,16 @@
       <span id="toast-message">Đã lưu thông tin!</span>
     </div>
 
+    <!-- Background Audio Element (Westlife - I Lay My Love On You) -->
+    <audio id="bg-audio-player" loop preload="auto">
+      <source src="https://archive.org/download/HaloHaloMusikahan/Westlife-ILayMyLoveOnYou.mp3" type="audio/mpeg">
+      <source src="./assets/i-lay-my-love-on-you.mp3" type="audio/mpeg">
+    </audio>
+
     <!-- Song Selector Pill -->
     <div id="music-NowPlaying" class="hidden bg-white/90 backdrop-blur-md border border-botanical-sage/40 rounded-full px-3 py-1 shadow-md text-[11px] text-botanical-darksage flex items-center gap-2">
       <span class="w-2 h-2 rounded-full bg-botanical-deepblush animate-ping"></span>
-      <span id="song-title-text">Canon in D (Piano &amp; Strings)</span>
-      <button onclick="switchMelodyTrack()" class="text-botanical-deepblush hover:underline font-semibold ml-1" title="Đổi bài nhạc">Đổi bài</button>
+      <span id="song-title-text">I Lay My Love On You - Westlife</span>
     </div>
 
     <!-- Vinyl Record Player Button -->
@@ -1421,60 +1426,55 @@
       showToast("Đã lưu cấu hình Google Sheets Webhook!");
     }
 
-    // --- 9. MULTI-VOICE WEB AUDIO API CLASSICAL PIANO & STRING SYNTHESIZER ---
+    // --- 9. BACKGROUND MUSIC: WESTLIFE - I LAY MY LOVE ON YOU (MEDIUM VOLUME) ---
     let audioCtx = null;
     let isPlayingMusic = false;
     let melodyTimer = null;
     let noteCursor = 0;
-    let currentTrackIdx = 0;
+    const bgAudio = document.getElementById('bg-audio-player');
+    if (bgAudio) {
+      bgAudio.volume = 0.5; // Medium volume (50%)
+    }
 
-    const tracks = [
-      {
-        name: "Canon in D (Piano & Warm Strings)",
-        tempo: 540,
-        notes: [
-          { f: 587.33, b: 293.66, d: 600 }, { f: 440.00, b: 220.00, d: 600 },
-          { f: 493.88, b: 246.94, d: 600 }, { f: 369.99, b: 185.00, d: 600 },
-          { f: 392.00, b: 196.00, d: 600 }, { f: 293.66, b: 146.83, d: 600 },
-          { f: 392.00, b: 196.00, d: 600 }, { f: 440.00, b: 220.00, d: 650 }
-        ]
-      },
-      {
-        name: "Romantic Botanical Waltz (Acoustic)",
-        tempo: 480,
-        notes: [
-          { f: 523.25, b: 261.63, d: 520 }, { f: 659.25, b: 329.63, d: 520 },
-          { f: 783.99, b: 392.00, d: 520 }, { f: 659.25, b: 329.63, d: 520 },
-          { f: 587.33, b: 293.66, d: 520 }, { f: 493.88, b: 246.94, d: 520 },
-          { f: 523.25, b: 261.63, d: 700 }
-        ]
-      }
-    ];
+    const westlifeTrack = {
+      name: "I Lay My Love On You - Westlife",
+      tempo: 420,
+      // Chorus melody of "I Lay My Love On You" ("Just a smile and the rain is gone...")
+      notes: [
+        { f: 415.30, b: 164.81, d: 380 }, { f: 440.00, b: 164.81, d: 380 },
+        { f: 493.88, b: 164.81, d: 520 }, { f: 493.88, b: 246.94, d: 380 },
+        { f: 554.37, b: 246.94, d: 380 }, { f: 493.88, b: 246.94, d: 380 },
+        { f: 440.00, b: 220.00, d: 450 }, { f: 415.30, b: 220.00, d: 520 },
+        { f: 369.99, b: 185.00, d: 380 }, { f: 415.30, b: 185.00, d: 380 },
+        { f: 440.00, b: 220.00, d: 520 }, { f: 369.99, b: 246.94, d: 450 },
+        { f: 329.63, b: 164.81, d: 650 }
+      ]
+    };
 
     function playPolyphonicChord(leadFreq, bassFreq, duration) {
       if (!audioCtx) return;
       const now = audioCtx.currentTime;
 
-      // Lead Piano Voice
+      // Lead Voice (Medium Volume)
       const osc1 = audioCtx.createOscillator();
       const gain1 = audioCtx.createGain();
       osc1.type = 'sine';
       osc1.frequency.setValueAtTime(leadFreq, now);
       gain1.gain.setValueAtTime(0.001, now);
-      gain1.gain.exponentialRampToValueAtTime(0.11, now + 0.04);
+      gain1.gain.exponentialRampToValueAtTime(0.06, now + 0.04);
       gain1.gain.exponentialRampToValueAtTime(0.0001, now + duration / 1000);
       osc1.connect(gain1);
       gain1.connect(audioCtx.destination);
       osc1.start(now);
       osc1.stop(now + duration / 1000);
 
-      // Warm Pad Bass Voice
+      // Warm Bass Voice (Medium Volume)
       const osc2 = audioCtx.createOscillator();
       const gain2 = audioCtx.createGain();
       osc2.type = 'triangle';
       osc2.frequency.setValueAtTime(bassFreq, now);
       gain2.gain.setValueAtTime(0.001, now);
-      gain2.gain.exponentialRampToValueAtTime(0.05, now + 0.08);
+      gain2.gain.exponentialRampToValueAtTime(0.03, now + 0.08);
       gain2.gain.exponentialRampToValueAtTime(0.0001, now + (duration * 1.2) / 1000);
       osc2.connect(gain2);
       gain2.connect(audioCtx.destination);
@@ -1482,43 +1482,48 @@
       osc2.stop(now + (duration * 1.2) / 1000);
     }
 
-    function startBackgroundMusic() {
+    function startSynthFallback() {
       if (!audioCtx) {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       }
       if (audioCtx.state === 'suspended') audioCtx.resume();
+      clearInterval(melodyTimer);
+      melodyTimer = setInterval(() => {
+        const n = westlifeTrack.notes[noteCursor % westlifeTrack.notes.length];
+        playPolyphonicChord(n.f, n.b, n.d);
+        noteCursor++;
+      }, westlifeTrack.tempo);
+    }
+
+    function startBackgroundMusic() {
       if (isPlayingMusic) return;
 
       isPlayingMusic = true;
       document.getElementById('vinyl-disc').classList.add('animate-vinyl');
       document.getElementById('music-NowPlaying').classList.remove('hidden');
+      document.getElementById('song-title-text').innerText = westlifeTrack.name;
 
-      const track = tracks[currentTrackIdx];
-      document.getElementById('song-title-text').innerText = track.name;
-
-      melodyTimer = setInterval(() => {
-        const activeTrack = tracks[currentTrackIdx];
-        const n = activeTrack.notes[noteCursor % activeTrack.notes.length];
-        playPolyphonicChord(n.f, n.b, n.d);
-        noteCursor++;
-      }, track.tempo);
+      if (bgAudio) {
+        bgAudio.volume = 0.5;
+        const playPromise = bgAudio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            startSynthFallback();
+          });
+        }
+      } else {
+        startSynthFallback();
+      }
     }
 
     function stopBackgroundMusic() {
       clearInterval(melodyTimer);
+      if (bgAudio) {
+        bgAudio.pause();
+      }
       isPlayingMusic = false;
       document.getElementById('vinyl-disc').classList.remove('animate-vinyl');
       document.getElementById('music-NowPlaying').classList.add('hidden');
-    }
-
-    function switchMelodyTrack() {
-      currentTrackIdx = (currentTrackIdx + 1) % tracks.length;
-      noteCursor = 0;
-      if (isPlayingMusic) {
-        stopBackgroundMusic();
-        startBackgroundMusic();
-      }
-      showToast(`Đang phát: ${tracks[currentTrackIdx].name}`);
     }
 
     document.getElementById('music-btn').addEventListener('click', () => {
@@ -1527,7 +1532,7 @@
         showToast("Đã tạm dừng nhạc nền");
       } else {
         startBackgroundMusic();
-        showToast(`Đang phát: ${tracks[currentTrackIdx].name} 🎵`);
+        showToast(`Đang phát: ${westlifeTrack.name} 🎵`);
       }
     });
 
