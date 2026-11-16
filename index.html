@@ -2021,10 +2021,30 @@
       if (bgAudio) {
         bgAudio.pause();
       }
+      if (audioCtx && audioCtx.state === 'running') {
+        audioCtx.suspend();
+      }
       isPlayingMusic = false;
       document.getElementById('vinyl-disc').classList.remove('animate-vinyl');
       document.getElementById('music-NowPlaying').classList.add('hidden');
     }
+
+    // Stop music when the website goes out of scope (tab switch, minimize, window blur, or page hide)
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && isPlayingMusic) {
+        stopBackgroundMusic();
+      }
+    });
+    window.addEventListener('blur', () => {
+      if (isPlayingMusic) {
+        stopBackgroundMusic();
+      }
+    });
+    window.addEventListener('pagehide', () => {
+      if (isPlayingMusic) {
+        stopBackgroundMusic();
+      }
+    });
 
     document.getElementById('music-btn').addEventListener('click', () => {
       if (isPlayingMusic) {
