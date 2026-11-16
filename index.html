@@ -82,6 +82,23 @@
       mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.75) 40%, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%);
     }
 
+    /* Photo collage mosaic: row height keeps 1x2 tiles at 2:3 portrait ratio, 2x2 tiles at ~3:2 landscape */
+    .collage-grid {
+      --gap: 8px;
+      --cols: 2;
+      --w: calc((min(100vw - 2rem, 48rem) - (var(--cols) - 1) * var(--gap)) / var(--cols));
+      grid-auto-rows: calc(var(--w) * 0.75 - var(--gap) / 2);
+    }
+    @media (min-width: 640px) {
+      .collage-grid {
+        --gap: 12px;
+        --cols: 4;
+        --w: calc((min(100vw - 6rem, 48rem) - (var(--cols) - 1) * var(--gap)) / var(--cols));
+      }
+    }
+    .collage-grid .gallery-card {
+      box-shadow: 0 6px 18px -6px rgba(47, 66, 46, 0.35);
+    }
     /* Hardware-Accelerated Liquid Glass Foreground (Zero SVG filter lag) */
     .liquid-glass {
       background: linear-gradient(
@@ -628,36 +645,28 @@
 
       <!-- Horizontal Carousel Navigation & 20-Photo Scrollable Strip -->
       <div class="relative max-w-3xl mx-auto group/carousel">
-        <!-- Left Scroll Button -->
-        <button onclick="scrollGallery(-1)" aria-label="Cuộn sang trái" class="hidden sm:flex absolute -left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/90 hover:bg-white text-botanical-darksage shadow-md border border-botanical-sage/40 items-center justify-center transition hover:scale-105">
-          <i data-lucide="chevron-left" class="w-5 h-5"></i>
-        </button>
-        <!-- Right Scroll Button -->
-        <button onclick="scrollGallery(1)" aria-label="Cuộn sang phải" class="hidden sm:flex absolute -right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/90 hover:bg-white text-botanical-darksage shadow-md border border-botanical-sage/40 items-center justify-center transition hover:scale-105">
-          <i data-lucide="chevron-right" class="w-5 h-5"></i>
-        </button>
 
-        <!-- 27-Photo 3x3 Horizontal Scroll Container -->
-        <div id="gallery-grid" class="grid grid-rows-3 grid-flow-col auto-cols-[calc((100%-1.5rem)/3)] sm:auto-cols-[calc((100%-2.5rem)/3)] gap-3 sm:gap-5 overflow-x-auto snap-x snap-mandatory pb-4 pt-1 px-1 custom-scroll scroll-smooth transform-gpu">
+        <!-- Photo Collage Mosaic -->
+        <div id="gallery-grid" class="collage-grid grid grid-cols-2 sm:grid-cols-4 grid-flow-row-dense gap-2 sm:gap-3 p-1">
           <!-- Item 0: KWAN4244 -->
-          <div data-category="nature" onclick="openLightbox(0)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="nature" onclick="openLightbox(0)" class="gallery-card col-span-1 row-span-2 sm:col-span-2 sm:row-span-4 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-0"
               width="500"
               height="750"
               loading="eager"
               decoding="async"
-              src="./assets/thumbs/KWAN4244.jpg"
+              src="./assets/full/KWAN4244.jpg"
               data-full-src="./assets/full/KWAN4244.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN4244"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 1: KWAN4282 -->
-          <div data-category="nature" onclick="openLightbox(1)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="nature" onclick="openLightbox(1)" class="gallery-card col-span-1 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-1"
               width="500"
@@ -667,14 +676,14 @@
               src="./assets/thumbs/KWAN4282.jpg"
               data-full-src="./assets/full/KWAN4282.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN4282"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 2: KWAN4352 -->
-          <div data-category="portrait" onclick="openLightbox(2)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="portrait" onclick="openLightbox(2)" class="gallery-card col-span-1 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-2"
               width="500"
@@ -684,14 +693,14 @@
               src="./assets/thumbs/KWAN4352.jpg"
               data-full-src="./assets/full/KWAN4352.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN4352"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 3: KWAN4359 -->
-          <div data-category="nature" onclick="openLightbox(3)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="nature" onclick="openLightbox(3)" class="gallery-card col-span-2 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-3"
               width="500"
@@ -701,14 +710,14 @@
               src="./assets/thumbs/KWAN4359.jpg"
               data-full-src="./assets/full/KWAN4359.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN4359"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 4: KWAN4435 -->
-          <div data-category="portrait" onclick="openLightbox(4)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="portrait" onclick="openLightbox(4)" class="gallery-card col-span-1 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-4"
               width="500"
@@ -718,14 +727,14 @@
               src="./assets/thumbs/KWAN4435.jpg"
               data-full-src="./assets/full/KWAN4435.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN4435"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 5: KWAN4482 -->
-          <div data-category="night" onclick="openLightbox(5)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="night" onclick="openLightbox(5)" class="gallery-card col-span-1 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-5"
               width="500"
@@ -735,14 +744,14 @@
               src="./assets/thumbs/KWAN4482.jpg"
               data-full-src="./assets/full/KWAN4482.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN4482"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 6: KWAN4555 -->
-          <div data-category="nature" onclick="openLightbox(6)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="nature" onclick="openLightbox(6)" class="gallery-card col-span-2 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-6"
               width="500"
@@ -752,31 +761,31 @@
               src="./assets/thumbs/KWAN4555.jpg"
               data-full-src="./assets/full/KWAN4555.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN4555"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 7: KWAN4661 -->
-          <div data-category="portrait" onclick="openLightbox(7)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="portrait" onclick="openLightbox(7)" class="gallery-card col-span-1 row-span-2 sm:col-span-2 sm:row-span-4 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-7"
               width="500"
               height="750"
               loading="eager"
               decoding="async"
-              src="./assets/thumbs/KWAN4661.jpg"
+              src="./assets/full/KWAN4661.jpg"
               data-full-src="./assets/full/KWAN4661.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN4661"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 8: KWAN4719 -->
-          <div data-category="nature" onclick="openLightbox(8)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="nature" onclick="openLightbox(8)" class="gallery-card col-span-1 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-8"
               width="500"
@@ -786,14 +795,14 @@
               src="./assets/thumbs/KWAN4719.jpg"
               data-full-src="./assets/full/KWAN4719.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN4719"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 9: KWAN4765 -->
-          <div data-category="portrait" onclick="openLightbox(9)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="portrait" onclick="openLightbox(9)" class="gallery-card col-span-1 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-9"
               width="500"
@@ -803,14 +812,14 @@
               src="./assets/thumbs/KWAN4765.jpg"
               data-full-src="./assets/full/KWAN4765.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN4765"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 10: KWAN4779 -->
-          <div data-category="night" onclick="openLightbox(10)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="night" onclick="openLightbox(10)" class="gallery-card col-span-1 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-10"
               width="500"
@@ -820,14 +829,14 @@
               src="./assets/thumbs/KWAN4779.jpg"
               data-full-src="./assets/full/KWAN4779.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN4779"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 11: KWAN4804 -->
-          <div data-category="nature" onclick="openLightbox(11)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="nature" onclick="openLightbox(11)" class="gallery-card col-span-1 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-11"
               width="500"
@@ -837,14 +846,14 @@
               src="./assets/thumbs/KWAN4804.jpg"
               data-full-src="./assets/full/KWAN4804.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN4804"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 12: KWAN4834 -->
-          <div data-category="portrait" onclick="openLightbox(12)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="portrait" onclick="openLightbox(12)" class="gallery-card col-span-1 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-12"
               width="500"
@@ -854,14 +863,14 @@
               src="./assets/thumbs/KWAN4834.jpg"
               data-full-src="./assets/full/KWAN4834.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN4834"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 13: KWAN4883 -->
-          <div data-category="nature" onclick="openLightbox(13)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="nature" onclick="openLightbox(13)" class="gallery-card col-span-1 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-13"
               width="500"
@@ -871,31 +880,31 @@
               src="./assets/thumbs/KWAN4883.jpg"
               data-full-src="./assets/full/KWAN4883.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN4883"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 14: KWAN4901 -->
-          <div data-category="night" onclick="openLightbox(14)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="night" onclick="openLightbox(14)" class="gallery-card col-span-1 row-span-2 sm:col-span-2 sm:row-span-4 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-14"
               width="500"
               height="750"
               loading="lazy"
               decoding="async"
-              src="./assets/thumbs/KWAN4901.jpg"
+              src="./assets/full/KWAN4901.jpg"
               data-full-src="./assets/full/KWAN4901.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN4901"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 15: KWAN4984 -->
-          <div data-category="portrait" onclick="openLightbox(15)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="portrait" onclick="openLightbox(15)" class="gallery-card col-span-1 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-15"
               width="500"
@@ -905,14 +914,14 @@
               src="./assets/thumbs/KWAN4984.jpg"
               data-full-src="./assets/full/KWAN4984.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN4984"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 16: KWAN5035 -->
-          <div data-category="nature" onclick="openLightbox(16)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="nature" onclick="openLightbox(16)" class="gallery-card col-span-1 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-16"
               width="500"
@@ -922,14 +931,14 @@
               src="./assets/thumbs/KWAN5035.jpg"
               data-full-src="./assets/full/KWAN5035.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN5035"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 17: KWAN5065 -->
-          <div data-category="night" onclick="openLightbox(17)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="night" onclick="openLightbox(17)" class="gallery-card col-span-1 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-17"
               width="500"
@@ -939,14 +948,14 @@
               src="./assets/thumbs/KWAN5065.jpg"
               data-full-src="./assets/full/KWAN5065.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN5065"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 18: KWAN5190 -->
-          <div data-category="portrait" onclick="openLightbox(18)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="portrait" onclick="openLightbox(18)" class="gallery-card col-span-1 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-18"
               width="500"
@@ -956,14 +965,14 @@
               src="./assets/thumbs/KWAN5190.jpg"
               data-full-src="./assets/full/KWAN5190.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN5190"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 19: KWAN5230 -->
-          <div data-category="night" onclick="openLightbox(19)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="night" onclick="openLightbox(19)" class="gallery-card col-span-1 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-19"
               width="500"
@@ -973,31 +982,31 @@
               src="./assets/thumbs/KWAN5230.jpg"
               data-full-src="./assets/full/KWAN5230.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN5230"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 20: KWAN5235 -->
-          <div data-category="nature" onclick="openLightbox(20)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="nature" onclick="openLightbox(20)" class="gallery-card col-span-1 row-span-2 sm:col-span-2 sm:row-span-4 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-20"
               width="500"
               height="750"
               loading="lazy"
               decoding="async"
-              src="./assets/thumbs/KWAN5235.jpg"
+              src="./assets/full/KWAN5235.jpg"
               data-full-src="./assets/full/KWAN5235.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN5235"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 21: KWAN5290 -->
-          <div data-category="portrait" onclick="openLightbox(21)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="portrait" onclick="openLightbox(21)" class="gallery-card col-span-2 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-21"
               width="500"
@@ -1007,14 +1016,14 @@
               src="./assets/thumbs/KWAN5290.jpg"
               data-full-src="./assets/full/KWAN5290.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN5290"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 22: KWAN5331 -->
-          <div data-category="night" onclick="openLightbox(22)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="night" onclick="openLightbox(22)" class="gallery-card col-span-1 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-22"
               width="500"
@@ -1024,14 +1033,14 @@
               src="./assets/thumbs/KWAN5331.jpg"
               data-full-src="./assets/full/KWAN5331.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN5331"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 23: KWAN5356 -->
-          <div data-category="night" onclick="openLightbox(23)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="night" onclick="openLightbox(23)" class="gallery-card col-span-1 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-23"
               width="500"
@@ -1041,14 +1050,14 @@
               src="./assets/thumbs/KWAN5356.jpg"
               data-full-src="./assets/full/KWAN5356.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN5356"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 24: KWAN5408 -->
-          <div data-category="portrait" onclick="openLightbox(24)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="portrait" onclick="openLightbox(24)" class="gallery-card col-span-2 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-24"
               width="500"
@@ -1058,14 +1067,14 @@
               src="./assets/thumbs/KWAN5408.jpg"
               data-full-src="./assets/full/KWAN5408.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN5408"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 25: KWAN5551 -->
-          <div data-category="night" onclick="openLightbox(25)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="night" onclick="openLightbox(25)" class="gallery-card col-span-1 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-25"
               width="500"
@@ -1075,14 +1084,14 @@
               src="./assets/thumbs/KWAN5551.jpg"
               data-full-src="./assets/full/KWAN5551.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN5551"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
             </div>
           </div>
           <!-- Item 26: KWAN4263 -->
-          <div data-category="night" onclick="openLightbox(26)" class="gallery-card aspect-[3/4] snap-start group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
+          <div data-category="night" onclick="openLightbox(26)" class="gallery-card col-span-2 row-span-2 group relative rounded-xl overflow-hidden shadow-sm border-2 border-white cursor-pointer bg-botanical-lightsage">
             <img
               id="gallery-img-26"
               width="500"
@@ -1092,7 +1101,7 @@
               src="./assets/thumbs/KWAN4263.jpg"
               data-full-src="./assets/full/KWAN4263.jpg"
               alt="Khoảnh khắc hạnh phúc - KWAN4263"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <i data-lucide="zoom-in" class="w-6 h-6 text-white"></i>
