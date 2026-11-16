@@ -2038,24 +2038,34 @@
       document.getElementById('music-NowPlaying').classList.add('hidden');
     }
 
-    // Stop music when the website goes out of scope (tab switch, minimize, window blur, or page hide)
+    // Pause when the website goes out of scope, and resume automatically when the user comes back
+    let resumeMusicOnReturn = false;
+
+    function pauseMusicForScope() {
+      if (isPlayingMusic) {
+        resumeMusicOnReturn = true;
+        stopBackgroundMusic();
+      }
+    }
+
+    function resumeMusicForScope() {
+      if (resumeMusicOnReturn && !isPlayingMusic) {
+        resumeMusicOnReturn = false;
+        startBackgroundMusic();
+      }
+    }
+
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden && isPlayingMusic) {
-        stopBackgroundMusic();
-      }
+      if (document.hidden) pauseMusicForScope();
+      else resumeMusicForScope();
     });
-    window.addEventListener('blur', () => {
-      if (isPlayingMusic) {
-        stopBackgroundMusic();
-      }
-    });
-    window.addEventListener('pagehide', () => {
-      if (isPlayingMusic) {
-        stopBackgroundMusic();
-      }
-    });
+    window.addEventListener('blur', pauseMusicForScope);
+    window.addEventListener('focus', resumeMusicForScope);
+    window.addEventListener('pagehide', pauseMusicForScope);
+    window.addEventListener('pageshow', resumeMusicForScope);
 
     document.getElementById('music-btn').addEventListener('click', () => {
+      resumeMusicOnReturn = false; // a manual choice cancels auto-resume
       if (isPlayingMusic) {
         stopBackgroundMusic();
         showToast("Đã tạm dừng nhạc nền");
