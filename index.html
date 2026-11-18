@@ -1209,6 +1209,13 @@
         value="Anh Minh & Người thương"
         class="w-full px-3.5 py-2.5 rounded-lg border border-botanical-sage text-sm mb-3 focus:outline-none focus:border-botanical-darksage"
       />
+      <div class="mb-3">
+        <label class="block text-[11px] font-semibold uppercase tracking-wider text-botanical-charcoal/70 mb-1.5">Chọn Thiệp Mời</label>
+        <select id="gen-side-select" onchange="updateGeneratedGuestLink()" class="w-full px-3.5 py-2 rounded-lg border border-botanical-sage text-xs bg-white text-botanical-charcoal focus:outline-none focus:border-botanical-darksage">
+          <option value="thanhhon">Nhà Trai — Lễ Thành Hôn (29/11)</option>
+          <option value="vuquy">Nhà Gái — Lễ Vu Quy / Bữa Cơm Thân Mật (/vu-quy)</option>
+        </select>
+      </div>
       <div class="bg-botanical-ivory p-3 rounded-lg border border-botanical-sage/30 text-[11px] font-mono text-botanical-darksage break-all mb-4" id="gen-link-preview">
         https://thiepcuoi.vercel.app/?guest=Anh+Minh+%26+Ng%C6%B0%E1%BB%9Di+th%C6%B0%C6%A1ng
       </div>
@@ -1427,8 +1434,20 @@
       const params = new URLSearchParams(window.location.search);
       const guestName = params.get('guest') || params.get('khach') || params.get('to');
       if (guestName) applyGuestNameToUI(guestName);
-      const ceremonyTab = params.get('tab') || params.get('ceremony');
-      if (ceremonyTab === 'vuquy') switchHeroCeremony('vuquy');
+      const path = window.location.pathname.toLowerCase();
+      const hash = window.location.hash.toLowerCase();
+      const ceremonyTab = params.get('tab') || params.get('ceremony') || params.get('side');
+      if (
+        ceremonyTab === 'vuquy' ||
+        ceremonyTab === 'bride' ||
+        path.endsWith('/vu-quy') ||
+        path.endsWith('/nha-gai') ||
+        path.endsWith('/bride') ||
+        hash === '#vu-quy' ||
+        hash === '#nha-gai'
+      ) {
+        switchHeroCeremony('vuquy');
+      }
     }
 
     // --- 3. INTERACTIVE LOVE STORY TIMELINE DATA & RENDERER ---
@@ -1863,6 +1882,8 @@
     }
 
     function openLinkGeneratorModal() {
+      const sideSelect = document.getElementById('gen-side-select');
+      if (sideSelect) sideSelect.value = activeHeroCeremony;
       updateGeneratedGuestLink();
       document.getElementById('link-gen-modal').classList.remove('hidden');
     }
@@ -1873,8 +1894,10 @@
 
     function getGeneratedLinkString() {
       const guestVal = document.getElementById('gen-guest-input').value.trim() || "Quý Khách tham dự";
-      const baseUrl = window.location.origin + window.location.pathname;
-      return `${baseUrl}?guest=${encodeURIComponent(guestVal)}`;
+      const sideSelect = document.getElementById('gen-side-select');
+      const isVuQuy = sideSelect ? sideSelect.value === 'vuquy' : activeHeroCeremony === 'vuquy';
+      const basePath = isVuQuy ? '/vu-quy' : '/';
+      return `${window.location.origin}${basePath}?guest=${encodeURIComponent(guestVal)}`;
     }
 
     function updateGeneratedGuestLink() {

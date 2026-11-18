@@ -2,6 +2,11 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/vu-quy", "destination": "/index.html" },
+    { "source": "/nha-gai", "destination": "/index.html" },
+    { "source": "/bride", "destination": "/index.html" }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
