@@ -361,35 +361,51 @@
     </div>
 
     <!-- =====================================================================
-         SECTION 1: HERO HEADER & TRIPTYCH PREVIEW
+         SECTION 1: HERO HEADER & CEREMONY TAB SWITCHER (LỄ THÀNH HÔN / LỄ VU QUY)
          ===================================================================== -->
     <header class="relative pt-14 sm:pt-20 pb-8 px-4 text-center z-20">
-      <div id="guest-greeting-badge" class="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-botanical-lightsage/90 border border-botanical-sage/50 text-botanical-darksage text-xs sm:text-sm font-medium mb-5 shadow-xs">
+      <div id="guest-greeting-badge" class="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-botanical-lightsage/90 border border-botanical-sage/50 text-botanical-darksage text-xs sm:text-sm font-medium mb-4 shadow-xs">
         <i data-lucide="heart" class="w-3.5 h-3.5 text-botanical-deepblush fill-botanical-deepblush"></i>
         <span id="guest-greeting-text">Trân trọng kính mời Quý khách</span>
       </div>
 
-      <p class="font-script text-3xl sm:text-4xl text-botanical-charcoal/80 mb-1" data-i18n="hero_ceremony">
+      <!-- Ceremony Tabs: Lễ Thành Hôn (Nhà Trai) / Lễ Vu Quy (Nhà Gái) -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-5">
+        <button
+          id="hero-tab-thanhhon"
+          onclick="switchHeroCeremony('thanhhon')"
+          class="px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-botanical-darksage text-white shadow-md">
+          Lễ Thành Hôn (Nhà Trai)
+        </button>
+        <button
+          id="hero-tab-vuquy"
+          onclick="switchHeroCeremony('vuquy')"
+          class="px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white/90 text-botanical-charcoal border border-botanical-blush hover:bg-botanical-softpink">
+          Lễ Vu Quy (Nhà Gái)
+        </button>
+      </div>
+
+      <p id="hero-ceremony-title" class="font-script text-3xl sm:text-4xl text-botanical-charcoal/80 mb-1">
         Lễ Thành Hôn
       </p>
 
-      <h1 class="font-script text-5xl sm:text-7xl md:text-8xl text-botanical-darksage py-1 leading-tight drop-shadow-xs">
+      <h1 id="hero-couple-names" class="font-script text-5xl sm:text-7xl md:text-8xl text-botanical-darksage py-1 leading-tight drop-shadow-xs">
         Mạnh Huy <span class="text-botanical-deepblush text-4xl sm:text-6xl">&amp;</span> Thu Hiền
       </h1>
 
       <div class="flex items-center justify-center gap-3 sm:gap-5 mt-5 mb-2">
         <span class="h-[1px] w-8 sm:w-20 bg-botanical-sage/60"></span>
-        <span class="font-serif font-bold text-xl sm:text-3xl text-botanical-darksage tracking-[0.16em]">
+        <span id="hero-date-line" class="font-serif font-bold text-xl sm:text-3xl text-botanical-darksage tracking-[0.16em]">
           10:00 AM • CHỦ NHẬT • 29 . 11 . 2026
         </span>
         <span class="h-[1px] w-8 sm:w-20 bg-botanical-sage/60"></span>
       </div>
-      <p class="font-serif italic text-lg sm:text-xl text-botanical-charcoal/75 mb-3" data-i18n="lunar_29_11">
+      <p id="hero-lunar-line" class="font-serif italic text-lg sm:text-xl text-botanical-charcoal/75 mb-3">
         (Tức ngày 21 tháng 10 năm Bính Ngọ)
       </p>
-      <a href="https://maps.app.goo.gl/7KJ5syjURzqtDq759" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 font-serif font-semibold text-lg sm:text-2xl text-botanical-deepsage hover:text-botanical-deepblush transition mb-5">
+      <a id="hero-location-link" href="https://maps.app.goo.gl/7KJ5syjURzqtDq759" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 font-serif font-semibold text-lg sm:text-2xl text-botanical-deepsage hover:text-botanical-deepblush transition mb-5">
         <i data-lucide="map-pin" class="w-5 h-5 sm:w-6 sm:h-6 text-botanical-deepblush shrink-0"></i>
-        <span>Nhà Trai: Xóm 5, Thôn 6, Xã Hòa Lạc, Thành phố Hà Nội</span>
+        <span id="hero-location-text">Nhà Trai: Xóm 5, Thôn 6, Xã Hòa Lạc, Thành phố Hà Nội</span>
       </a>
 
       <p class="font-serif italic text-base sm:text-lg text-botanical-charcoal/75 max-w-lg mx-auto mb-2" data-i18n="hero_quote">
@@ -1354,6 +1370,47 @@
       showToast(currentLang === 'vi' ? "Đã chuyển sang Tiếng Việt" : "Switched to English");
     }
 
+    // --- 1B. HERO CEREMONY TAB SWITCHER (LỄ THÀNH HÔN / LỄ VU QUY) ---
+    let activeHeroCeremony = 'thanhhon';
+    function switchHeroCeremony(type) {
+      activeHeroCeremony = type === 'vuquy' ? 'vuquy' : 'thanhhon';
+      const isVuQuy = activeHeroCeremony === 'vuquy';
+
+      const thBtn = document.getElementById('hero-tab-thanhhon');
+      const vqBtn = document.getElementById('hero-tab-vuquy');
+      if (thBtn && vqBtn) {
+        thBtn.className = isVuQuy
+          ? "px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white/90 text-botanical-charcoal border border-botanical-sage/40 hover:bg-botanical-lightsage"
+          : "px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-botanical-darksage text-white shadow-md";
+        vqBtn.className = isVuQuy
+          ? "px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-botanical-deepblush text-white shadow-md"
+          : "px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white/90 text-botanical-charcoal border border-botanical-blush hover:bg-botanical-softpink";
+      }
+
+      const titleEl = document.getElementById('hero-ceremony-title');
+      const namesEl = document.getElementById('hero-couple-names');
+      const dateEl = document.getElementById('hero-date-line');
+      const lunarEl = document.getElementById('hero-lunar-line');
+      const locLink = document.getElementById('hero-location-link');
+      const locText = document.getElementById('hero-location-text');
+
+      if (isVuQuy) {
+        if (titleEl) titleEl.innerText = 'Bữa Cơm Thân Mật';
+        if (namesEl) namesEl.innerHTML = 'Thu Hiền <span class="text-botanical-deepblush text-4xl sm:text-6xl">&amp;</span> Mạnh Huy';
+        if (dateEl) dateEl.innerText = '17:30 • THỨ BẢY • 28 . 11 . 2026';
+        if (lunarEl) lunarEl.innerText = '(Tức ngày 20 tháng 10 năm Bính Ngọ)';
+        if (locLink) locLink.href = 'https://maps.app.goo.gl/sTa6AfV99D2N6F5n6';
+        if (locText) locText.innerText = 'Nhà Gái: Xóm 3, Thôn Đôn Thư, Xã Thanh Oai, Thành phố Hà Nội';
+      } else {
+        if (titleEl) titleEl.innerText = 'Lễ Thành Hôn';
+        if (namesEl) namesEl.innerHTML = 'Mạnh Huy <span class="text-botanical-deepblush text-4xl sm:text-6xl">&amp;</span> Thu Hiền';
+        if (dateEl) dateEl.innerText = '10:00 • CHỦ NHẬT • 29 . 11 . 2026';
+        if (lunarEl) lunarEl.innerText = '(Tức ngày 21 tháng 10 năm Bính Ngọ)';
+        if (locLink) locLink.href = 'https://maps.app.goo.gl/7KJ5syjURzqtDq759';
+        if (locText) locText.innerText = 'Nhà Trai: Xóm 5, Thôn 6, Xã Hòa Lạc, Thành phố Hà Nội';
+      }
+    }
+
     // --- 2. PERSONALIZED GUEST NAME ---
     function applyGuestNameToUI(guestName) {
       if (!guestName || !guestName.trim()) return;
@@ -1370,6 +1427,8 @@
       const params = new URLSearchParams(window.location.search);
       const guestName = params.get('guest') || params.get('khach') || params.get('to');
       if (guestName) applyGuestNameToUI(guestName);
+      const ceremonyTab = params.get('tab') || params.get('ceremony');
+      if (ceremonyTab === 'vuquy') switchHeroCeremony('vuquy');
     }
 
     // --- 3. INTERACTIVE LOVE STORY TIMELINE DATA & RENDERER ---
