@@ -1813,7 +1813,7 @@
     }
 
     function getGeneratedLinkString() {
-      const guestVal = document.getElementById('gen-guest-input').value.trim() || "Quý Khách";
+      const guestVal = document.getElementById('gen-guest-input').value.trim() || "Quý Khách tham dự";
       const baseUrl = window.location.origin + window.location.pathname;
       return `${baseUrl}?guest=${encodeURIComponent(guestVal)}`;
     }
