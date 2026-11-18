@@ -166,6 +166,43 @@
       transform: scale(1.06);
     }
 
+    /* Botanical Buttons: Green/Pink background + White text, reversed on click/active */
+    .btn-sage {
+      background-color: #4F634E;
+      color: #ffffff;
+      border: 1.5px solid #4F634E;
+      transition: all 0.2s ease;
+    }
+    .btn-sage:hover {
+      background-color: #2F422E;
+      border-color: #2F422E;
+      color: #ffffff;
+    }
+    .btn-sage:active,
+    .btn-sage.is-reversed {
+      background-color: #ffffff;
+      color: #4F634E;
+      border-color: #4F634E;
+    }
+
+    .btn-blush {
+      background-color: #D98A94;
+      color: #ffffff;
+      border: 1.5px solid #D98A94;
+      transition: all 0.2s ease;
+    }
+    .btn-blush:hover {
+      background-color: #c5747f;
+      border-color: #c5747f;
+      color: #ffffff;
+    }
+    .btn-blush:active,
+    .btn-blush.is-reversed {
+      background-color: #ffffff;
+      color: #D98A94;
+      border-color: #D98A94;
+    }
+
     .scroll-reveal {
       opacity: 0;
       transform: translate3d(0, 24px, 0);
@@ -217,34 +254,21 @@
 
       <!-- Desktop Menu -->
       <div class="hidden lg:flex items-center gap-5 text-[11px] uppercase tracking-widest font-semibold text-botanical-charcoal/80">
-        <a href="#cap-doi" class="hover:text-botanical-darksage transition" data-i18n="nav_couple">Cặp Đôi</a>
-        <a href="#lich-trinh" class="hover:text-botanical-darksage transition" data-i18n="nav_schedule">Lịch Trình</a>
-        <a href="#album-anh" class="hover:text-botanical-darksage transition" data-i18n="nav_gallery">Album Ảnh</a>
-        <a href="#mung-cuoi" class="hover:text-botanical-darksage transition" data-i18n="nav_gift">Mừng Cưới</a>
+        <a href="#cap-doi" class="hover:text-botanical-darksage transition">Cặp Đôi</a>
+        <a href="#lich-trinh" class="hover:text-botanical-darksage transition">Lịch Trình</a>
+        <a href="#album-anh" class="hover:text-botanical-darksage transition">Album Ảnh</a>
+        <a href="#mung-cuoi" class="hover:text-botanical-darksage transition">Mừng Cưới</a>
       </div>
 
-      <!-- Right Controls: Language Toggle & Link Generator -->
+      <!-- Right Control: Create Guest Link Button -->
       <div class="flex items-center gap-2">
         <button 
-          onclick="toggleLanguage()" 
-          id="lang-toggle-btn"
-          class="px-3 py-1 rounded-full bg-botanical-lightsage border border-botanical-sage/50 text-botanical-darksage text-xs font-semibold flex items-center gap-1.5 hover:bg-botanical-sage hover:text-white transition"
-          title="Chuyển đổi Ngôn ngữ Tiếng Việt / English">
-          <i data-lucide="globe" class="w-3.5 h-3.5"></i>
-          <span id="lang-label">VI</span>
-        </button>
-
-        <button 
           onclick="openLinkGeneratorModal()" 
-          class="hidden sm:inline-flex px-3 py-1 rounded-full bg-white border border-botanical-blush text-botanical-charcoal text-xs font-medium items-center gap-1 hover:bg-botanical-softpink transition"
+          class="btn-blush inline-flex px-3.5 py-1.5 rounded-full text-xs font-semibold items-center gap-1.5 shadow-xs"
           title="Tạo link mời theo tên khách">
-          <i data-lucide="link" class="w-3.5 h-3.5 text-botanical-deepblush"></i>
-          <span data-i18n="nav_link_tool">Tạo Link Khách</span>
+          <i data-lucide="link" class="w-3.5 h-3.5"></i>
+          <span>Tạo Link Khách</span>
         </button>
-
-        <a href="#rsvp" class="lg:hidden px-3 py-1 rounded-full bg-botanical-darksage text-white text-xs font-semibold">
-          RSVP
-        </a>
       </div>
     </div>
   </nav>
@@ -361,7 +385,7 @@
     </div>
 
     <!-- =====================================================================
-         SECTION 1: HERO HEADER & CEREMONY TAB SWITCHER (LỄ THÀNH HÔN / LỄ VU QUY)
+         SECTION 1: HERO HEADER & CEREMONY TAB SWITCHER
          ===================================================================== -->
     <header class="relative pt-14 sm:pt-20 pb-8 px-4 text-center z-20">
       <div id="guest-greeting-badge" class="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-botanical-lightsage/90 border border-botanical-sage/50 text-botanical-darksage text-xs sm:text-sm font-medium mb-4 shadow-xs">
@@ -369,19 +393,37 @@
         <span id="guest-greeting-text">Trân trọng kính mời Quý khách tham dự</span>
       </div>
 
-      <!-- Ceremony Tabs: Lễ Thành Hôn (Nhà Trai) / Lễ Vu Quy (Nhà Gái) -->
-      <div class="flex flex-wrap items-center justify-center gap-2 mb-5">
+      <!-- Ceremony Tabs -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-6 max-w-2xl mx-auto">
+        <button
+          id="hero-tab-anhoi"
+          onclick="switchHeroCeremony('anhoi')"
+          class="btn-blush px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-semibold shadow-xs">
+          Lễ Ăn Hỏi
+        </button>
+        <button
+          id="hero-tab-buacomnhatrai"
+          onclick="switchHeroCeremony('buacomnhatrai')"
+          class="btn-sage px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-semibold shadow-xs">
+          Bữa Cơm Thân Mật (Nhà Trai)
+        </button>
+        <button
+          id="hero-tab-buacomnhagai"
+          onclick="switchHeroCeremony('buacomnhagai')"
+          class="btn-blush px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-semibold shadow-xs">
+          Bữa Cơm Thân Mật (Nhà Gái)
+        </button>
+        <button
+          id="hero-tab-levuquy"
+          onclick="switchHeroCeremony('levuquy')"
+          class="btn-blush px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-semibold shadow-xs">
+          Lễ Vu Quy
+        </button>
         <button
           id="hero-tab-thanhhon"
           onclick="switchHeroCeremony('thanhhon')"
-          class="px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-botanical-darksage text-white shadow-md">
+          class="btn-sage is-reversed px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-semibold shadow-md">
           Lễ Thành Hôn (Nhà Trai)
-        </button>
-        <button
-          id="hero-tab-vuquy"
-          onclick="switchHeroCeremony('vuquy')"
-          class="px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white/90 text-botanical-charcoal border border-botanical-blush hover:bg-botanical-softpink">
-          Lễ Vu Quy (Nhà Gái)
         </button>
       </div>
 
@@ -396,19 +438,30 @@
       <div class="flex items-center justify-center gap-3 sm:gap-5 mt-5 mb-2">
         <span class="h-[1px] w-8 sm:w-20 bg-botanical-sage/60"></span>
         <span id="hero-date-line" class="font-serif font-bold text-xl sm:text-3xl text-botanical-darksage tracking-[0.16em]">
-          10:00 • CHỦ NHẬT • 29 . 11 . 2026
+          10:00 AM • CHỦ NHẬT • 29 . 11 . 2026
         </span>
         <span class="h-[1px] w-8 sm:w-20 bg-botanical-sage/60"></span>
       </div>
       <p id="hero-lunar-line" class="font-serif italic text-lg sm:text-xl text-botanical-charcoal/75 mb-3">
         (Tức ngày 21 tháng 10 năm Bính Ngọ)
       </p>
-      <a id="hero-location-link" href="https://maps.app.goo.gl/7KJ5syjURzqtDq759" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 font-serif font-semibold text-lg sm:text-2xl text-botanical-deepsage hover:text-botanical-deepblush transition mb-5">
+      <p class="inline-flex items-center justify-center gap-2 font-serif font-semibold text-lg sm:text-2xl text-botanical-deepsage mb-3">
         <i data-lucide="map-pin" class="w-5 h-5 sm:w-6 sm:h-6 text-botanical-deepblush shrink-0"></i>
         <span id="hero-location-text">Nhà Trai: Xóm 5, Thôn 6, Xã Hòa Lạc, Thành phố Hà Nội</span>
-      </a>
+      </p>
+      <div class="mb-5">
+        <a
+          id="hero-map-btn"
+          href="https://maps.app.goo.gl/7KJ5syjURzqtDq759"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-sage inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold shadow-md">
+          <i data-lucide="navigation" class="w-4 h-4"></i>
+          <span>Mở Google Map</span>
+        </a>
+      </div>
 
-      <p class="font-serif italic text-base sm:text-lg text-botanical-charcoal/75 max-w-lg mx-auto mb-2" data-i18n="hero_quote">
+      <p class="font-serif italic text-base sm:text-lg text-botanical-charcoal/75 max-w-lg mx-auto mb-2">
         "Giữa muôn vàn sắc hoa của đất trời Hà Nội, chúng mình tìm thấy bình yên trọn vẹn trong ánh mắt nhau."
       </p>
     </header>
@@ -417,7 +470,7 @@
          SECTION 2: DOUBLE-RING COUNTDOWN & ADD TO CALENDAR (.ICS / GOOGLE)
          ===================================================================== -->
     <section id="count-down" class="relative z-20 py-10 px-4 text-center border-y border-botanical-sage/20">
-      <p class="text-[11px] uppercase tracking-[0.25em] text-botanical-darksage font-semibold mb-1" data-i18n="cd_subtitle">Cùng Đếm Ngược Tới Ngày Chung Đôi</p>
+      <p class="text-[11px] uppercase tracking-[0.25em] text-botanical-darksage font-semibold mb-1">Cùng Đếm Ngược Tới Ngày Chung Đôi</p>
       <h2 class="font-serif text-3xl sm:text-4xl text-botanical-charcoal font-normal tracking-wide mb-7">
         Count Down
       </h2>
@@ -427,28 +480,28 @@
         <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 border border-botanical-sage flex items-center justify-center bg-white shadow-xs">
           <div class="w-full h-full rounded-full border border-botanical-sage/40 flex flex-col items-center justify-center">
             <span id="cd-days" class="font-serif text-2xl sm:text-3xl font-bold text-botanical-charcoal leading-none">46</span>
-            <span class="font-serif italic text-xs sm:text-sm text-botanical-charcoal/70 mt-0.5" data-i18n="cd_days">days</span>
+            <span class="font-serif italic text-xs sm:text-sm text-botanical-charcoal/70 mt-0.5">ngày</span>
           </div>
         </div>
 
         <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 border border-botanical-sage flex items-center justify-center bg-white shadow-xs">
           <div class="w-full h-full rounded-full border border-botanical-sage/40 flex flex-col items-center justify-center">
             <span id="cd-hours" class="font-serif text-2xl sm:text-3xl font-bold text-botanical-charcoal leading-none">10</span>
-            <span class="font-serif italic text-xs sm:text-sm text-botanical-charcoal/70 mt-0.5" data-i18n="cd_hours">hours</span>
+            <span class="font-serif italic text-xs sm:text-sm text-botanical-charcoal/70 mt-0.5">giờ</span>
           </div>
         </div>
 
         <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 border border-botanical-sage flex items-center justify-center bg-white shadow-xs">
           <div class="w-full h-full rounded-full border border-botanical-sage/40 flex flex-col items-center justify-center">
             <span id="cd-minutes" class="font-serif text-2xl sm:text-3xl font-bold text-botanical-charcoal leading-none">05</span>
-            <span class="font-serif italic text-xs sm:text-sm text-botanical-charcoal/70 mt-0.5" data-i18n="cd_minutes">minutes</span>
+            <span class="font-serif italic text-xs sm:text-sm text-botanical-charcoal/70 mt-0.5">phút</span>
           </div>
         </div>
 
         <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 border border-botanical-deepblush flex items-center justify-center bg-white shadow-xs">
           <div class="w-full h-full rounded-full border border-botanical-blush flex flex-col items-center justify-center">
             <span id="cd-seconds" class="font-serif text-2xl sm:text-3xl font-bold text-botanical-deepblush leading-none">00</span>
-            <span class="font-serif italic text-xs sm:text-sm text-botanical-charcoal/70 mt-0.5" data-i18n="cd_seconds">seconds</span>
+            <span class="font-serif italic text-xs sm:text-sm text-botanical-charcoal/70 mt-0.5">giây</span>
           </div>
         </div>
       </div>
@@ -457,18 +510,18 @@
       <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
         <button 
           onclick="downloadIcsCalendar()" 
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-botanical-sage text-botanical-darksage hover:bg-botanical-sage hover:text-white text-xs font-medium shadow-xs transition">
+          class="btn-sage inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold shadow-xs">
           <i data-lucide="calendar-plus" class="w-3.5 h-3.5"></i>
-          <span data-i18n="btn_ics">Tải Lịch Apple / Outlook (.ICS)</span>
+          <span>Tải Lịch Apple / Outlook (.ICS)</span>
         </button>
 
         <a 
           href="" 
           target="_blank" 
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-botanical-softpink border border-botanical-blush text-botanical-charcoal hover:bg-botanical-blush/50 text-xs font-medium shadow-xs transition">
-          <i data-lucide="calendar-check" class="w-3.5 h-3.5 text-botanical-deepblush"></i>
-          <span data-i18n="btn_gcal">Lưu vào Google Calendar</span>
+          class="btn-blush inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold shadow-xs">
+          <i data-lucide="calendar-check" class="w-3.5 h-3.5"></i>
+          <span>Lưu vào Google Calendar</span>
         </a>
       </div>
     </section>
@@ -477,11 +530,11 @@
          SECTION 3: MEET THE COUPLE & FAMILY CARDS
          ===================================================================== -->
     <section id="cap-doi" class="relative z-20 px-6 sm:px-14 py-14 text-center">
-      <p class="text-xs uppercase tracking-[0.25em] text-botanical-darksage font-semibold mb-1" data-i18n="couple_sub">Cô Dâu &amp; Chú Rể</p>
-      <h2 class="font-serif text-3xl sm:text-4xl text-botanical-charcoal font-semibold mb-3" data-i18n="couple_title">
+      <p class="text-xs uppercase tracking-[0.25em] text-botanical-darksage font-semibold mb-1">Cô Dâu &amp; Chú Rể</p>
+      <h2 class="font-serif text-3xl sm:text-4xl text-botanical-charcoal font-semibold mb-3">
         Đôi Uyên Ương Hạnh Phúc
       </h2>
-      <p class="text-xs sm:text-sm text-botanical-charcoal/75 max-w-xl mx-auto leading-relaxed mb-10" data-i18n="couple_desc">
+      <p class="text-xs sm:text-sm text-botanical-charcoal/75 max-w-xl mx-auto leading-relaxed mb-10">
         Hai mảnh ghép tưởng chừng khác biệt nhưng lại hòa hợp diệu kỳ khi cùng nhìn về một hướng và vun đắp tổ ấm nhỏ.
       </p>
 
@@ -499,7 +552,7 @@
                 <i data-lucide="leaf" class="w-3.5 h-3.5"></i>
               </span>
             </div>
-            <span class="text-[11px] uppercase tracking-widest text-botanical-darksage font-bold" data-i18n="groom_role">Chú Rể</span>
+            <span class="text-[11px] uppercase tracking-widest text-botanical-darksage font-bold">Chú Rể • Trưởng Nam</span>
             <h3 class="font-serif text-2xl sm:text-3xl font-bold text-botanical-charcoal mt-0.5 mb-2">Mạnh Xuân Huy</h3>
             <div class="flex flex-wrap justify-center gap-1.5 mb-3">
               <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-botanical-lightsage text-botanical-darksage font-medium">Kỹ sư máy tính</span>
@@ -511,7 +564,7 @@
           </div>
 
           <div class="mt-5 pt-4 border-t border-botanical-sage/25 text-xs text-botanical-charcoal/80 bg-botanical-lightsage/40 rounded-xl p-3">
-            <p class="font-semibold text-botanical-darksage uppercase tracking-wider text-[10px] mb-1" data-i18n="groom_family">Đại Diện Nhà Trai</p>
+            <p class="font-semibold text-botanical-darksage uppercase tracking-wider text-[10px] mb-1">Đại Diện Nhà Trai</p>
             <p>Ông: <strong>Mạnh Xuân Thủy</strong></p>
             <p>Bà: <strong>Nguyễn Hồng Nguyên</strong></p>
             <p class="text-[11px] text-botanical-charcoal/60 mt-1">Xã Hòa Lạc, TP. Hà Nội</p>
@@ -531,7 +584,7 @@
                 <i data-lucide="flower-2" class="w-3.5 h-3.5"></i>
               </span>
             </div>
-            <span class="text-[11px] uppercase tracking-widest text-botanical-deepblush font-bold" data-i18n="bride_role">Cô Dâu</span>
+            <span class="text-[11px] uppercase tracking-widest text-botanical-deepblush font-bold">Cô Dâu • Ái Nữ</span>
             <h3 class="font-serif text-2xl sm:text-3xl font-bold text-botanical-charcoal mt-0.5 mb-2">Vũ Thu Hiền</h3>
             <div class="flex flex-wrap justify-center gap-1.5 mb-3">
               <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-botanical-softpink text-botanical-deepblush font-medium">Giáo viên tiếng anh</span>
@@ -543,7 +596,7 @@
           </div>
 
           <div class="mt-5 pt-4 border-t border-botanical-blush/35 text-xs text-botanical-charcoal/80 bg-botanical-softpink/60 rounded-xl p-3">
-            <p class="font-semibold text-botanical-deepblush uppercase tracking-wider text-[10px] mb-1" data-i18n="bride_family">Đại Diện Nhà Gái</p>
+            <p class="font-semibold text-botanical-deepblush uppercase tracking-wider text-[10px] mb-1">Đại Diện Nhà Gái</p>
             <p>Ông: <strong>Vũ Thể Bình</strong></p>
             <p>Bà: <strong>Kim Thị Hòa</strong></p>
             <p class="text-[11px] text-botanical-charcoal/60 mt-1">Xã Thanh Oai, TP. Hà Nội</p>
@@ -558,25 +611,25 @@
          ===================================================================== -->
     <section id="lich-trinh" class="relative z-20 px-6 sm:px-14 py-14 border-t border-botanical-sage/25">
       <div class="text-center mb-8">
-        <p class="text-xs uppercase tracking-[0.25em] text-botanical-darksage font-semibold mb-1" data-i18n="sched_sub">Chương Trình</p>
-        <h2 class="font-serif text-3xl sm:text-4xl text-botanical-charcoal font-semibold" data-i18n="sched_title">Lịch Trình</h2>
+        <p class="text-xs uppercase tracking-[0.25em] text-botanical-darksage font-semibold mb-1">Chương Trình</p>
+        <h2 class="font-serif text-3xl sm:text-4xl text-botanical-charcoal font-semibold">Lịch Trình</h2>
       </div>
 
       <div class="max-w-3xl mx-auto space-y-6">
-        <!-- Event 1: Lễ Vu Quy -->
-        <div id="sched-panel-vuquy" class="bg-white/90 rounded-2xl p-6 sm:p-8 border border-botanical-blush/60 shadow-sm">
+        <!-- Event 1: Lễ Ăn Hỏi (14:00 28/11/2026 - Nhà Gái) -->
+        <div id="sched-panel-anhoi" class="bg-white/90 rounded-2xl p-6 sm:p-8 border border-botanical-blush/60 shadow-sm">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-6 border-b border-botanical-blush/30">
             <div>
               <div class="flex flex-wrap items-center gap-2">
-                <span class="text-[11px] uppercase tracking-wider font-bold text-botanical-deepblush">Thứ Bảy • 28/11/2026</span>
-                <span class="text-[12px] font-serif italic text-botanical-charcoal/70 bg-botanical-softpink px-2.5 py-0.5 rounded-full border border-botanical-blush/40" data-i18n="lunar_28_11">Tức ngày 20 tháng 10 năm Bính Ngọ</span>
+                <span class="text-[11px] uppercase tracking-wider font-bold text-botanical-deepblush">14:00 • Thứ Bảy • 28/11/2026</span>
+                <span class="text-[12px] font-serif italic text-botanical-charcoal/70 bg-botanical-softpink px-2.5 py-0.5 rounded-full border border-botanical-blush/40">Tức ngày 20 tháng 10 năm Bính Ngọ</span>
               </div>
-              <h3 class="font-serif text-2xl font-bold text-botanical-charcoal mt-1">Lễ Vu Quy </h3>
-              <p class="text-xs text-botanical-charcoal/70 mt-0.5">Xóm 3, Thôn Đôn Thư, Xã Thanh Oai, Thành phố Hà Nội</p>
+              <h3 class="font-serif text-2xl font-bold text-botanical-charcoal mt-1">Lễ Ăn Hỏi</h3>
+              <p class="text-xs text-botanical-charcoal/70 mt-0.5">Nhà Gái: Xóm 3, Thôn Đôn Thư, Xã Thanh Oai, Thành phố Hà Nội</p>
             </div>
-            <a href="https://maps.app.goo.gl/sTa6AfV99D2N6F5n6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-botanical-softpink text-botanical-deepblush border border-botanical-blush text-xs font-semibold shrink-0 hover:bg-botanical-blush/30 transition">
+            <a href="https://maps.app.goo.gl/sTa6AfV99D2N6F5n6" target="_blank" rel="noopener noreferrer" class="btn-blush inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold shrink-0 shadow-xs">
               <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
-              <span>Chỉ đường Nhà Gái</span>
+              <span>Mở Google Map</span>
             </a>
           </div>
 
@@ -593,26 +646,80 @@
             </div>
             <div class="p-3.5 rounded-xl bg-botanical-softpink/50 border border-botanical-blush/30">
               <span class="font-mono text-xs font-bold text-botanical-deepblush">14:30</span>
-              <p class="font-serif font-bold text-base text-botanical-charcoal mt-1">Tiệc Thân Mật</p>
-              <p class="text-[11px] text-botanical-charcoal/65">Dùng bữa cơm thân mật</p>
+              <p class="font-serif font-bold text-base text-botanical-charcoal mt-1">Chụp Ảnh Lưu Niệm</p>
+              <p class="text-[11px] text-botanical-charcoal/65">Cùng hai bên gia đình</p>
             </div>
           </div>
         </div>
 
-        <!-- Event 2: Lễ Thành Hôn & Tiệc Cưới Chính -->
+        <!-- Event 2: Bữa Cơm Thân Mật (Nhà Trai) (17:00 28/11/2026) -->
+        <div id="sched-panel-buacomnhatrai" class="bg-white/90 rounded-2xl p-6 sm:p-8 border border-botanical-sage/50 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-[11px] uppercase tracking-wider font-bold text-botanical-darksage">17:00 • Thứ Bảy • 28/11/2026</span>
+                <span class="text-[12px] font-serif italic text-botanical-charcoal/70 bg-botanical-lightsage px-2.5 py-0.5 rounded-full border border-botanical-sage/40">Tức ngày 20 tháng 10 năm Bính Ngọ</span>
+              </div>
+              <h3 class="font-serif text-2xl font-bold text-botanical-charcoal mt-1">Bữa Cơm Thân Mật (Nhà Trai)</h3>
+              <p class="text-xs text-botanical-charcoal/70 mt-0.5">Nhà Trai: Xóm 5, Thôn 6, Xã Hòa Lạc, Thành phố Hà Nội</p>
+            </div>
+            <a href="https://maps.app.goo.gl/7KJ5syjURzqtDq759" target="_blank" rel="noopener noreferrer" class="btn-sage inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold shrink-0 shadow-xs">
+              <i data-lucide="navigation" class="w-3.5 h-3.5"></i>
+              <span>Mở Google Map</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Event 3: Bữa Cơm Thân Mật (Nhà Gái) (17:30 28/11/2026) -->
+        <div id="sched-panel-buacomnhagai" class="bg-white/90 rounded-2xl p-6 sm:p-8 border border-botanical-blush/60 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-[11px] uppercase tracking-wider font-bold text-botanical-deepblush">17:30 • Thứ Bảy • 28/11/2026</span>
+                <span class="text-[12px] font-serif italic text-botanical-charcoal/70 bg-botanical-softpink px-2.5 py-0.5 rounded-full border border-botanical-blush/40">Tức ngày 20 tháng 10 năm Bính Ngọ</span>
+              </div>
+              <h3 class="font-serif text-2xl font-bold text-botanical-charcoal mt-1">Bữa Cơm Thân Mật (Nhà Gái)</h3>
+              <p class="text-xs text-botanical-charcoal/70 mt-0.5">Nhà Gái: Xóm 3, Thôn Đôn Thư, Xã Thanh Oai, Thành phố Hà Nội</p>
+            </div>
+            <a href="https://maps.app.goo.gl/sTa6AfV99D2N6F5n6" target="_blank" rel="noopener noreferrer" class="btn-blush inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold shrink-0 shadow-xs">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+              <span>Mở Google Map</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Event 4: Lễ Vu Quy (07:00 29/11/2026 - Nhà Gái) -->
+        <div id="sched-panel-levuquy" class="bg-white/90 rounded-2xl p-6 sm:p-8 border border-botanical-blush/60 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-[11px] uppercase tracking-wider font-bold text-botanical-deepblush">07:00 • Chủ Nhật • 29/11/2026</span>
+                <span class="text-[12px] font-serif italic text-botanical-charcoal/70 bg-botanical-softpink px-2.5 py-0.5 rounded-full border border-botanical-blush/40">Tức ngày 21 tháng 10 năm Bính Ngọ</span>
+              </div>
+              <h3 class="font-serif text-2xl font-bold text-botanical-charcoal mt-1">Lễ Vu Quy</h3>
+              <p class="text-xs text-botanical-charcoal/70 mt-0.5">Nhà Gái: Xóm 3, Thôn Đôn Thư, Xã Thanh Oai, Thành phố Hà Nội</p>
+            </div>
+            <a href="https://maps.app.goo.gl/sTa6AfV99D2N6F5n6" target="_blank" rel="noopener noreferrer" class="btn-blush inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold shrink-0 shadow-xs">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+              <span>Mở Google Map</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Event 5: Lễ Thành Hôn & Tiệc Cưới Chính (10:00 29/11/2026 - Nhà Trai) -->
         <div id="sched-panel-thanhhon" class="bg-white/90 rounded-2xl p-6 sm:p-8 border border-botanical-sage/50 shadow-sm">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-6 border-b border-botanical-sage/25">
             <div>
               <div class="flex flex-wrap items-center gap-2">
-                <span class="text-[11px] uppercase tracking-wider font-bold text-botanical-darksage">Chủ Nhật • 29/11/2026</span>
-                <span class="text-[12px] font-serif italic text-botanical-charcoal/70 bg-botanical-lightsage px-2.5 py-0.5 rounded-full border border-botanical-sage/40" data-i18n="lunar_29_11_badge">Tức ngày 21 tháng 10 năm Bính Ngọ</span>
+                <span class="text-[11px] uppercase tracking-wider font-bold text-botanical-darksage">10:00 • Chủ Nhật • 29/11/2026</span>
+                <span class="text-[12px] font-serif italic text-botanical-charcoal/70 bg-botanical-lightsage px-2.5 py-0.5 rounded-full border border-botanical-sage/40">Tức ngày 21 tháng 10 năm Bính Ngọ</span>
               </div>
               <h3 class="font-serif text-2xl font-bold text-botanical-charcoal mt-1">Lễ Thành Hôn</h3>
-              <p class="text-xs text-botanical-charcoal/70 mt-0.5">Xóm 5, Thôn 6, Xã Hòa Lạc, Thành phố Hà Nội</p>
+              <p class="text-xs text-botanical-charcoal/70 mt-0.5">Nhà Trai: Xóm 5, Thôn 6, Xã Hòa Lạc, Thành phố Hà Nội</p>
             </div>
-            <a href="https://maps.app.goo.gl/7KJ5syjURzqtDq759" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-botanical-lightsage text-botanical-darksage border border-botanical-sage text-xs font-semibold shrink-0 hover:bg-botanical-sage hover:text-white transition">
+            <a href="https://maps.app.goo.gl/7KJ5syjURzqtDq759" target="_blank" rel="noopener noreferrer" class="btn-sage inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold shrink-0 shadow-xs">
               <i data-lucide="navigation" class="w-3.5 h-3.5"></i>
-              <span>Chỉ đường Nhà Trai</span>
+              <span>Mở Google Map</span>
             </a>
           </div>
 
@@ -643,22 +750,22 @@
          ===================================================================== -->
     <section id="album-anh" class="relative z-20 px-4 sm:px-12 py-14 border-t border-botanical-sage/20">
       <div class="text-center mb-6">
-        <p class="text-xs uppercase tracking-[0.25em] text-botanical-darksage font-semibold mb-1" data-i18n="gallery_sub">Khoảnh Khắc Đáng Nhớ</p>
-        <h2 class="font-serif text-3xl sm:text-4xl text-botanical-charcoal font-semibold" data-i18n="gallery_title">Album Ảnh Pre-Wedding</h2>
+        <p class="text-xs uppercase tracking-[0.25em] text-botanical-darksage font-semibold mb-1">Khoảnh Khắc Đáng Nhớ</p>
+        <h2 class="font-serif text-3xl sm:text-4xl text-botanical-charcoal font-semibold">Album Ảnh Pre-Wedding</h2>
       </div>
 
       <!-- Category Filter Pills -->
       <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
-        <button onclick="filterGallery('all')" data-filter="all" class="gallery-filter-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-botanical-darksage text-white shadow-xs transition">
+        <button onclick="filterGallery('all')" data-filter="all" class="gallery-filter-btn btn-sage is-reversed px-4 py-1.5 rounded-full text-xs font-semibold shadow-xs">
           Tất cả (27)
         </button>
-        <button onclick="filterGallery('nature')" data-filter="nature" class="gallery-filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-botanical-charcoal border border-botanical-sage/40 hover:border-botanical-darksage transition">
+        <button onclick="filterGallery('nature')" data-filter="nature" class="gallery-filter-btn btn-sage px-4 py-1.5 rounded-full text-xs font-semibold shadow-xs">
           Ngoại Cảnh
         </button>
-        <button onclick="filterGallery('portrait')" data-filter="portrait" class="gallery-filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-botanical-charcoal border border-botanical-sage/40 hover:border-botanical-darksage transition">
+        <button onclick="filterGallery('portrait')" data-filter="portrait" class="gallery-filter-btn btn-sage px-4 py-1.5 rounded-full text-xs font-semibold shadow-xs">
           Chân Dung Cặp Đôi
         </button>
-        <button onclick="filterGallery('night')" data-filter="night" class="gallery-filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-botanical-charcoal border border-botanical-sage/40 hover:border-botanical-darksage transition">
+        <button onclick="filterGallery('night')" data-filter="night" class="gallery-filter-btn btn-sage px-4 py-1.5 rounded-full text-xs font-semibold shadow-xs">
           Tiệc cưới
         </button>
       </div>
@@ -1132,14 +1239,101 @@
 
       <!-- Custom Photo Preview Uploader -->
       <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
-        <button onclick="openLightbox(0)" class="inline-flex items-center gap-1.5 text-xs text-botanical-darksage hover:text-botanical-deepsage font-medium px-4 py-2 rounded-full bg-botanical-lightsage border border-botanical-sage/40 transition">
+        <button onclick="openLightbox(0)" class="btn-sage inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-full shadow-xs">
           <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
           <span>Trình chiếu Lightbox toàn màn hình</span>
         </button>
       </div>
     </section>
 
-    
+    <!-- =====================================================================
+         SECTION 9: DYNAMIC VIETQR WEDDING GIFT BOX (REVEALED BY BUTTON)
+         ===================================================================== -->
+    <section id="mung-cuoi" class="relative z-20 px-6 sm:px-14 py-14 border-t border-botanical-sage/25 text-center">
+      <div class="max-w-xl mx-auto">
+        <i data-lucide="gift" class="w-7 h-7 text-botanical-darksage mx-auto mb-2"></i>
+        <h2 class="font-serif text-3xl sm:text-4xl text-botanical-charcoal font-semibold mb-3">Hộp Mừng Cưới Tinh Tế</h2>
+        <button
+          id="qr-reveal-btn"
+          onclick="toggleQrRevealSection()"
+          class="btn-blush inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-semibold shadow-md">
+          <i data-lucide="heart" class="w-4 h-4"></i>
+          <span>Mừng cưới cô dâu và chú rể</span>
+        </button>
+      </div>
+
+      <div id="qr-reveal-panel" class="hidden mt-8">
+        <div class="text-center mb-8">
+          <p class="text-xs sm:text-sm text-botanical-charcoal/70 max-w-lg mx-auto">
+            Nếu Quý khách ở xa muốn gửi trao món quà tình cảm cùng lời chúc phúc, Quý khách có thể nhập lời nhắn để tạo mã QR chuyển khoản tự động:
+          </p>
+
+          <!-- Dynamic QR Transfer Message Customizer -->
+          <div class="max-w-md mx-auto mt-4 flex items-center gap-2 bg-white p-1.5 rounded-full border border-botanical-sage/40 shadow-xs">
+            <input 
+              type="text" 
+              id="qr-custom-memo" 
+              placeholder="Nhập nội dung lời chúc chuyển khoản..." 
+              value="Chuc mung hanh phuc Huy Hien"
+              class="flex-1 px-3.5 py-1.5 text-xs bg-transparent focus:outline-none text-botanical-charcoal"
+            />
+            <button 
+              onclick="updateDynamicVietQR()" 
+              class="btn-sage px-4 py-1.5 rounded-full text-xs font-semibold shrink-0">
+              Cập nhật QR
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-3xl mx-auto">
+          <!-- Groom QR Card -->
+          <div class="bg-white rounded-2xl p-6 border border-botanical-sage/40 shadow-sm text-center flex flex-col items-center">
+            <span class="text-[11px] font-semibold uppercase tracking-widest text-botanical-darksage mb-1">Mừng Cưới Nhà Trai</span>
+            <h4 class="font-serif text-xl font-bold text-botanical-charcoal mb-3">Mạnh Xuân Huy</h4>
+            <div class="w-64 sm:w-72 p-2 rounded-xl border border-dashed border-botanical-sage bg-botanical-ivory mb-4">
+              <img 
+                id="groom-qr-img"
+                loading="lazy"
+                src="https://img.vietqr.io/image/VCB-1043227223-compact2.png?addInfo=Chuc%20mung%20hanh%20phuc%20Huy%20Hien&amp;accountName=MANH%20XUAN%20HUY" 
+                alt="VietQR Chú Rể Mạnh Xuân Huy" 
+                class="w-full h-auto object-contain rounded-lg"
+              />
+            </div>
+            <p class="text-xs text-botanical-charcoal/75 mb-1">Ngân hàng: <strong>Vietcombank (VCB)</strong></p>
+            <p class="text-xs text-botanical-charcoal/75 mb-4">STK: <strong class="font-mono text-botanical-darksage text-sm">1043227223</strong></p>
+            <button 
+              onclick="copyText('1043227223', 'Đã sao chép STK Chú Rể: 1043227223')"
+              class="btn-sage w-full py-2.5 rounded-full text-xs font-semibold flex items-center justify-center gap-1.5">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>Sao chép STK Chú Rể</span>
+            </button>
+          </div>
+
+          <!-- Bride QR Card -->
+          <div class="bg-white rounded-2xl p-6 border border-botanical-blush/60 shadow-sm text-center flex flex-col items-center">
+            <span class="text-[11px] font-semibold uppercase tracking-widest text-botanical-deepblush mb-1">Mừng Cưới Nhà Gái</span>
+            <h4 class="font-serif text-xl font-bold text-botanical-charcoal mb-3">Vũ Thu Hiền</h4>
+            <div class="w-64 sm:w-72 p-2 rounded-xl border border-dashed border-botanical-blush bg-botanical-softpink/40 mb-4">
+              <img 
+                id="bride-qr-img"
+                loading="lazy"
+                src="https://img.vietqr.io/image/BIDV-4504848044-compact2.png?addInfo=Chuc%20mung%20hanh%20phuc%20Huy%20Hien&amp;accountName=VU%20THU%20HIEN" 
+                alt="VietQR Cô Dâu Vũ Thu Hiền" 
+                class="w-full h-auto object-contain rounded-lg"
+              />
+            </div>
+            <p class="text-xs text-botanical-charcoal/75 mb-1">Ngân hàng: <strong>BIDV</strong></p>
+            <p class="text-xs text-botanical-charcoal/75 mb-4">STK: <strong class="font-mono text-botanical-deepblush text-sm">4504848044</strong></p>
+            <button 
+              onclick="copyText('4504848044', 'Đã sao chép STK Cô Dâu: 4504848044')"
+              class="btn-blush w-full py-2.5 rounded-full text-xs font-semibold flex items-center justify-center gap-1.5">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>Sao chép STK Cô Dâu</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- =====================================================================
          FOOTER WITH COUPLE LINK GENERATOR TOOL
@@ -1151,13 +1345,13 @@
       <p class="font-serif italic text-sm text-botanical-charcoal/70 mb-0.5">
         Forever &amp; Always • 29.11.2026 • Hà Nội
       </p>
-      <p class="font-serif italic text-xs text-botanical-charcoal/55 mb-5" data-i18n="lunar_29_11">
+      <p class="font-serif italic text-xs text-botanical-charcoal/55 mb-5">
         (Tức ngày 21 tháng 10 năm Bính Ngọ)
       </p>
       <div class="flex flex-wrap items-center justify-center gap-3">
         <button 
           onclick="openLinkGeneratorModal()" 
-          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-botanical-lightsage text-botanical-darksage text-xs font-medium hover:bg-botanical-sage hover:text-white transition">
+          class="btn-sage inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold shadow-xs">
           <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
           <span>Công cụ tạo Link mời cá nhân hóa cho từng khách</span>
         </button>
@@ -1212,18 +1406,21 @@
       <div class="mb-3">
         <label class="block text-[11px] font-semibold uppercase tracking-wider text-botanical-charcoal/70 mb-1.5">Chọn Thiệp Mời</label>
         <select id="gen-side-select" onchange="updateGeneratedGuestLink()" class="w-full px-3.5 py-2 rounded-lg border border-botanical-sage text-xs bg-white text-botanical-charcoal focus:outline-none focus:border-botanical-darksage">
-          <option value="thanhhon">Nhà Trai — Lễ Thành Hôn (29/11)</option>
-          <option value="vuquy">Nhà Gái — Lễ Vu Quy / Bữa Cơm Thân Mật (/vu-quy)</option>
+          <option value="thanhhon">Nhà Trai — Lễ Thành Hôn (10:00 • 29/11)</option>
+          <option value="buacomnhagai">Nhà Gái — Bữa Cơm Thân Mật (17:30 • 28/11) (/nha-gai)</option>
+          <option value="buacomnhatrai">Nhà Trai — Bữa Cơm Thân Mật (17:00 • 28/11)</option>
+          <option value="anhoi">Nhà Gái — Lễ Ăn Hỏi (14:00 • 28/11) (/an-hoi)</option>
+          <option value="levuquy">Nhà Gái — Lễ Vu Quy (07:00 • 29/11) (/vu-quy)</option>
         </select>
       </div>
       <div class="bg-botanical-ivory p-3 rounded-lg border border-botanical-sage/30 text-[11px] font-mono text-botanical-darksage break-all mb-4" id="gen-link-preview">
         https://thiepcuoi.vercel.app/?guest=Anh+Minh+%26+Ng%C6%B0%E1%BB%9Di+th%C6%B0%C6%A1ng
       </div>
       <div class="flex justify-end gap-2">
-        <button onclick="previewGeneratedGuestNow()" class="px-4 py-2 rounded-lg text-xs border border-botanical-sage text-botanical-darksage hover:bg-botanical-lightsage font-medium">
+        <button onclick="previewGeneratedGuestNow()" class="btn-blush px-4 py-2 rounded-lg text-xs font-semibold">
           Xem thử ngay
         </button>
-        <button onclick="copyGeneratedGuestLink()" class="px-5 py-2 rounded-lg text-xs bg-botanical-darksage text-white font-semibold hover:bg-botanical-deepsage flex items-center gap-1.5">
+        <button onclick="copyGeneratedGuestLink()" class="btn-sage px-5 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5">
           <i data-lucide="copy" class="w-3.5 h-3.5"></i>
           <span>Sao chép Link gửi Zalo</span>
         </button>
@@ -1262,163 +1459,92 @@
        APPLICATION JAVASCRIPT LOGIC
        ===================================================================== -->
   <script>
-    // --- 1. BILINGUAL DICTIONARY (VI / EN) ---
-    let currentLang = 'vi';
-    const i18nDict = {
-      vi: {
-        splash_badge: "Thiệp Mời Lễ Thành Hôn",
-        splash_invite_label: "Trân trọng kính mời",
-        splash_sub: "Đến dự buổi tiệc chung vui cùng gia đình chúng tôi",
-        open_btn: "Mở Thiệp",
-        click_to_open: "Chạm Để Mở Thiệp & Phát Nhạc",
-        open_muted: "Mở thiệp ở chế độ im lặng",
-        nav_couple: "Cặp Đôi",
-        nav_story: "Chuyện Tình",
-        nav_schedule: "Lịch Trình",
-        nav_gallery: "Album Ảnh",
-        nav_rsvp: "Xác Nhận & Chỗ Ngồi",
-        nav_guestbook: "Lưu Bút",
-        nav_gift: "Mừng Cưới",
-        nav_link_tool: "Tạo Link Khách",
-        hero_ceremony: "Lễ Thành Hôn",
-        lunar_28_11: "Tức ngày 20 tháng 10 năm Bính Ngọ",
-        lunar_29_11: "(Tức ngày 21 tháng 10 năm Bính Ngọ)",
-        lunar_29_11_badge: "Tức ngày 21 tháng 10 năm Bính Ngọ",
-        lunar_29_11_short: "(21/10 Âm lịch - Bính Ngọ)",
-        hero_quote: "\"Giữa muôn vàn sắc hoa của đất trời Hà Nội, chúng mình tìm thấy bình yên trọn vẹn trong ánh mắt nhau.\"",
-        cd_subtitle: "Cùng Đếm Ngược Tới Ngày Chung Đôi",
-        cd_days: "ngày",
-        cd_hours: "giờ",
-        cd_minutes: "phút",
-        cd_seconds: "giây",
-        btn_ics: "Tải Lịch Apple / Outlook (.ICS)",
-        btn_gcal: "Lưu vào Google Calendar",
-        couple_sub: "Cô Dâu & Chú Rể",
-        couple_title: "Đôi Uyên Ương Hạnh Phúc",
-        couple_desc: "Hai mảnh ghép tưởng chừng khác biệt nhưng lại hòa hợp diệu kỳ khi cùng nhìn về một hướng và vun đắp tổ ấm nhỏ.",
-        groom_role: "Chú Rể • Trưởng Nam",
-        bride_role: "Cô Dâu • Ái Nữ",
-        groom_family: "Đại Diện Nhà Trai",
-        bride_family: "Đại Diện Nhà Gái",
-        story_sub: "Chặng Đường Ta Đi Cùng Nhau",
-        story_title: "Câu Chuyện Tình Yêu",
-        story_hint: "Chạm vào từng cột mốc để xem kỷ niệm chi tiết của chúng mình",
-        sched_sub: "Chương Trình",
-        sched_title: "Lịch Trình Sự Kiện Trọng Đại",
-        dresscode_title: "Gợi Ý Trang Phục (Dress Code Palette)",
-        gallery_sub: "Khoảnh Khắc Đáng Nhớ",
-        gallery_title: "Album Ảnh Pre-Wedding",
-        rsvp_title: "Xác nhận tham dự (RSVP)",
-        rsvp_desc: "Hãy giúp chúng mình chuẩn bị đón tiếp chu đáo nhất bằng cách xác nhận thông tin và chọn khu vực bàn tiệc bên dưới nhé!",
-        gb_title: "Sổ Lưu Bút Yêu Thương",
-        gift_title: "Hộp Mừng Cưới Tinh Tế",
-        gift_desc: "Nếu Quý khách ở xa muốn gửi trao món quà tình cảm cùng lời chúc phúc, Quý khách có thể nhập lời nhắn để tạo mã QR chuyển khoản tự động:"
+    // --- 1. HERO CEREMONY TAB SWITCHER ---
+    const GROOM_MAP_URL = 'https://maps.app.goo.gl/7KJ5syjURzqtDq759';
+    const BRIDE_MAP_URL = 'https://maps.app.goo.gl/sTa6AfV99D2N6F5n6';
+    const GROOM_ADDRESS = 'Nhà Trai: Xóm 5, Thôn 6, Xã Hòa Lạc, Thành phố Hà Nội';
+    const BRIDE_ADDRESS = 'Nhà Gái: Xóm 3, Thôn Đôn Thư, Xã Thanh Oai, Thành phố Hà Nội';
+
+    const heroCeremonies = {
+      anhoi: {
+        title: 'Lễ Ăn Hỏi',
+        namesHtml: 'Thu Hiền <span class="text-botanical-deepblush text-4xl sm:text-6xl">&amp;</span> Mạnh Huy',
+        dateLine: '14:00 • THỨ BẢY • 28 . 11 . 2026',
+        lunarLine: '(Tức ngày 20 tháng 10 năm Bính Ngọ)',
+        location: BRIDE_ADDRESS,
+        mapUrl: BRIDE_MAP_URL,
+        theme: 'blush'
       },
-      en: {
-        splash_badge: "Wedding Ceremony Invitation",
-        splash_invite_label: "Cordially Inviting",
-        splash_sub: "To celebrate our wedding reception with our families",
-        open_btn: "Open",
-        click_to_open: "Tap to Open Invitation & Play Music",
-        open_muted: "Open invitation without music",
-        nav_couple: "The Couple",
-        nav_story: "Our Story",
-        nav_schedule: "Schedule",
-        nav_gallery: "Gallery",
-        nav_rsvp: "RSVP",
-        nav_guestbook: "Guestbook",
-        nav_gift: "Wedding Gift",
-        nav_link_tool: "Guest Link Tool",
-        hero_ceremony: "The Wedding Of",
-        lunar_28_11: "Lunar Date: 20th Day, 10th Month, Year of Bính Ngọ",
-        lunar_29_11: "(Lunar Date: 21st Day, 10th Month, Year of Bính Ngọ)",
-        lunar_29_11_badge: "Lunar Date: 21st Day, 10th Month, Year of Bính Ngọ",
-        lunar_29_11_short: "(Lunar: 21/10 Bính Ngọ)",
-        hero_quote: "\"Amidst the blooming seasons of Hanoi, we found our forever peace in each other's eyes.\"",
-        cd_subtitle: "Counting Down To Our Big Day",
-        cd_days: "days",
-        cd_hours: "hours",
-        cd_minutes: "minutes",
-        cd_seconds: "seconds",
-        btn_ics: "Download Apple / Outlook (.ICS)",
-        btn_gcal: "Add to Google Calendar",
-        couple_sub: "Bride & Groom",
-        couple_title: "Meet The Happy Couple",
-        couple_desc: "Two distinct souls who found harmony, laughter, and a shared dream of building a warm home together.",
-        groom_role: "The Groom",
-        bride_role: "The Bride",
-        groom_family: "Groom's Parents",
-        bride_family: "Bride's Parents",
-        story_sub: "Our Journey Together",
-        story_title: "Our Love Story",
-        story_hint: "Click on each milestone below to read our special memories",
-        sched_sub: "Timeline",
-        sched_title: "Wedding Day Schedule",
-        dresscode_title: "Recommended Dress Code Palette",
-        gallery_sub: "Captured Memories",
-        gallery_title: "Pre-Wedding Photo Gallery",
-        rsvp_title: "RSVP & Table Selection",
-        rsvp_desc: "Kindly confirm your attendance, dietary preference, and preferred banquet table below.",
-        gb_title: "Wedding Guestbook Wall",
-        gift_title: "Wedding Gift & Blessings",
-        gift_desc: "If you wish to send a wedding blessing from afar, you can customize the transfer message to update the QR code:"
+      buacomnhatrai: {
+        title: 'Bữa Cơm Thân Mật',
+        namesHtml: 'Mạnh Huy <span class="text-botanical-deepblush text-4xl sm:text-6xl">&amp;</span> Thu Hiền',
+        dateLine: '17:00 • THỨ BẢY • 28 . 11 . 2026',
+        lunarLine: '(Tức ngày 20 tháng 10 năm Bính Ngọ)',
+        location: GROOM_ADDRESS,
+        mapUrl: GROOM_MAP_URL,
+        theme: 'sage'
+      },
+      buacomnhagai: {
+        title: 'Bữa Cơm Thân Mật',
+        namesHtml: 'Thu Hiền <span class="text-botanical-deepblush text-4xl sm:text-6xl">&amp;</span> Mạnh Huy',
+        dateLine: '17:30 • THỨ BẢY • 28 . 11 . 2026',
+        lunarLine: '(Tức ngày 20 tháng 10 năm Bính Ngọ)',
+        location: BRIDE_ADDRESS,
+        mapUrl: BRIDE_MAP_URL,
+        theme: 'blush'
+      },
+      levuquy: {
+        title: 'Lễ Vu Quy',
+        namesHtml: 'Thu Hiền <span class="text-botanical-deepblush text-4xl sm:text-6xl">&amp;</span> Mạnh Huy',
+        dateLine: '07:00 • CHỦ NHẬT • 29 . 11 . 2026',
+        lunarLine: '(Tức ngày 21 tháng 10 năm Bính Ngọ)',
+        location: BRIDE_ADDRESS,
+        mapUrl: BRIDE_MAP_URL,
+        theme: 'blush'
+      },
+      thanhhon: {
+        title: 'Lễ Thành Hôn',
+        namesHtml: 'Mạnh Huy <span class="text-botanical-deepblush text-4xl sm:text-6xl">&amp;</span> Thu Hiền',
+        dateLine: '10:00 AM • CHỦ NHẬT • 29 . 11 . 2026',
+        lunarLine: '(Tức ngày 21 tháng 10 năm Bính Ngọ)',
+        location: GROOM_ADDRESS,
+        mapUrl: GROOM_MAP_URL,
+        theme: 'sage'
       }
     };
 
-    function toggleLanguage() {
-      currentLang = currentLang === 'vi' ? 'en' : 'vi';
-      document.getElementById('lang-label').innerText = currentLang.toUpperCase();
-      const dict = i18nDict[currentLang];
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (dict[key]) el.innerText = dict[key];
-      });
-      renderLoveTimeline();
-      showToast(currentLang === 'vi' ? "Đã chuyển sang Tiếng Việt" : "Switched to English");
-    }
-
-    // --- 1B. HERO CEREMONY TAB SWITCHER (LỄ THÀNH HÔN / LỄ VU QUY) ---
     let activeHeroCeremony = 'thanhhon';
     function switchHeroCeremony(type) {
-      activeHeroCeremony = type === 'vuquy' ? 'vuquy' : 'thanhhon';
-      const isVuQuy = activeHeroCeremony === 'vuquy';
+      const cfg = heroCeremonies[type] || heroCeremonies.thanhhon;
+      activeHeroCeremony = heroCeremonies[type] ? type : 'thanhhon';
 
-      const thBtn = document.getElementById('hero-tab-thanhhon');
-      const vqBtn = document.getElementById('hero-tab-vuquy');
-      if (thBtn && vqBtn) {
-        thBtn.className = isVuQuy
-          ? "px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white/90 text-botanical-charcoal border border-botanical-sage/40 hover:bg-botanical-lightsage"
-          : "px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-botanical-darksage text-white shadow-md";
-        vqBtn.className = isVuQuy
-          ? "px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-botanical-deepblush text-white shadow-md"
-          : "px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white/90 text-botanical-charcoal border border-botanical-blush hover:bg-botanical-softpink";
-      }
+      Object.keys(heroCeremonies).forEach(key => {
+        const btn = document.getElementById(`hero-tab-${key}`);
+        if (!btn) return;
+        const themeClass = heroCeremonies[key].theme === 'blush' ? 'btn-blush' : 'btn-sage';
+        const isSelected = key === activeHeroCeremony;
+        btn.className = `${themeClass} ${isSelected ? 'is-reversed shadow-md' : 'shadow-xs'} px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-semibold`;
+      });
 
       const titleEl = document.getElementById('hero-ceremony-title');
       const namesEl = document.getElementById('hero-couple-names');
       const dateEl = document.getElementById('hero-date-line');
       const lunarEl = document.getElementById('hero-lunar-line');
-      const locLink = document.getElementById('hero-location-link');
       const locText = document.getElementById('hero-location-text');
+      const mapBtn = document.getElementById('hero-map-btn');
 
-      if (isVuQuy) {
-        if (titleEl) titleEl.innerText = 'Bữa Cơm Thân Mật';
-        if (namesEl) namesEl.innerHTML = 'Thu Hiền <span class="text-botanical-deepblush text-4xl sm:text-6xl">&amp;</span> Mạnh Huy';
-        if (dateEl) dateEl.innerText = '17:00 • THỨ BẢY • 28 . 11 . 2026';
-        if (lunarEl) lunarEl.innerText = '(Tức ngày 20 tháng 10 năm Bính Ngọ)';
-        if (locLink) locLink.href = 'https://maps.app.goo.gl/sTa6AfV99D2N6F5n6';
-        if (locText) locText.innerText = 'Nhà Gái: Xóm 3, Thôn Đôn Thư, Xã Thanh Oai, Thành phố Hà Nội';
-      } else {
-        if (titleEl) titleEl.innerText = 'Lễ Thành Hôn';
-        if (namesEl) namesEl.innerHTML = 'Mạnh Huy <span class="text-botanical-deepblush text-4xl sm:text-6xl">&amp;</span> Thu Hiền';
-        if (dateEl) dateEl.innerText = '10:00 • CHỦ NHẬT • 29 . 11 . 2026';
-        if (lunarEl) lunarEl.innerText = '(Tức ngày 21 tháng 10 năm Bính Ngọ)';
-        if (locLink) locLink.href = 'https://maps.app.goo.gl/7KJ5syjURzqtDq759';
-        if (locText) locText.innerText = 'Nhà Trai: Xóm 5, Thôn 6, Xã Hòa Lạc, Thành phố Hà Nội';
+      if (titleEl) titleEl.innerText = cfg.title;
+      if (namesEl) namesEl.innerHTML = cfg.namesHtml;
+      if (dateEl) dateEl.innerText = cfg.dateLine;
+      if (lunarEl) lunarEl.innerText = cfg.lunarLine;
+      if (locText) locText.innerText = cfg.location;
+      if (mapBtn) {
+        mapBtn.href = cfg.mapUrl;
+        mapBtn.className = `${cfg.theme === 'blush' ? 'btn-blush' : 'btn-sage'} inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold shadow-md`;
       }
     }
 
-    // --- 2. PERSONALIZED GUEST NAME ---
+    // --- 2. PERSONALIZED GUEST NAME & ROUTE DETECTION ---
     function applyGuestNameToUI(guestName) {
       if (!guestName || !guestName.trim()) return;
       const clean = guestName.trim();
@@ -1434,19 +1560,21 @@
       const params = new URLSearchParams(window.location.search);
       const guestName = params.get('guest') || params.get('khach') || params.get('to');
       if (guestName) applyGuestNameToUI(guestName);
+
       const path = window.location.pathname.toLowerCase();
       const hash = window.location.hash.toLowerCase();
-      const ceremonyTab = params.get('tab') || params.get('ceremony') || params.get('side');
-      if (
-        ceremonyTab === 'vuquy' ||
-        ceremonyTab === 'bride' ||
-        path.endsWith('/vu-quy') ||
-        path.endsWith('/nha-gai') ||
-        path.endsWith('/bride') ||
-        hash === '#vu-quy' ||
-        hash === '#nha-gai'
-      ) {
-        switchHeroCeremony('vuquy');
+      const ceremonyTab = (params.get('tab') || params.get('ceremony') || params.get('side') || '').toLowerCase();
+
+      if (heroCeremonies[ceremonyTab]) {
+        switchHeroCeremony(ceremonyTab);
+      } else if (ceremonyTab === 'vuquy' || ceremonyTab === 'bride' || path.endsWith('/nha-gai') || path.endsWith('/bride') || path.endsWith('/bua-com-nha-gai') || hash === '#nha-gai') {
+        switchHeroCeremony('buacomnhagai');
+      } else if (path.endsWith('/vu-quy') || hash === '#vu-quy') {
+        switchHeroCeremony('levuquy');
+      } else if (path.endsWith('/an-hoi') || hash === '#an-hoi') {
+        switchHeroCeremony('anhoi');
+      } else if (path.endsWith('/nha-trai') || hash === '#nha-trai') {
+        switchHeroCeremony('buacomnhatrai');
       }
     }
 
@@ -1454,38 +1582,30 @@
     const loveMilestones = [
       {
         date: "Tháng 10 / 2022",
-        title_vi: "Lần Đầu Gặp Gỡ Nơi Quán Nhỏ Phố Cổ",
-        title_en: "First Meeting at a Cozy Hanoi Café",
-        short_vi: "Một buổi chiều thu Hà Nội se lạnh, hai người tình cờ ngồi chung bàn tại một quán cà phê nhỏ trên phố Ấu Triệu.",
-        short_en: "On a crisp Hanoi autumn afternoon, we shared a table by chance at a quiet café near St. Joseph's Cathedral.",
-        detail_vi: "Huy ấn tượng bởi nụ cười dịu dàng và cuốn sổ phác thảo đầy hoa lá của Hiền. Cuộc trò chuyện kéo dài suốt 3 tiếng đồng hồ đã mở đầu cho hàng trăm buổi hẹn sau đó.",
+        title: "Lần Đầu Gặp Gỡ Nơi Quán Nhỏ Phố Cổ",
+        short: "Một buổi chiều thu Hà Nội se lạnh, hai người tình cờ ngồi chung bàn tại một quán cà phê nhỏ trên phố Ấu Triệu.",
+        detail: "Huy ấn tượng bởi nụ cười dịu dàng và cuốn sổ phác thảo đầy hoa lá của Hiền. Cuộc trò chuyện kéo dài suốt 3 tiếng đồng hồ đã mở đầu cho hàng trăm buổi hẹn sau đó.",
         photo: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80"
       },
       {
         date: "Tháng 06 / 2024",
-        title_vi: "Những Chuyến Đi Xa & Bình Minh Trên Hồ",
-        title_en: "Travels & Misty Lake Sunrises",
-        short_vi: "Cùng nhau đặt chân tới Đà Lạt, Ninh Bình và những vùng hồ sương giăng đầy kỷ niệm.",
-        short_en: "Exploring misty lakes and mountain trails together across Vietnam.",
-        detail_vi: "Mỗi chuyến đi đều giúp hai đứa hiểu và thương nhau nhiều hơn. Bộ ảnh cưới trên chiếc thuyền gỗ ngập tràn hoa tươi cũng được lấy cảm hứng từ chuyến đi kỷ niệm 2 năm yêu nhau.",
+        title: "Những Chuyến Đi Xa & Bình Minh Trên Hồ",
+        short: "Cùng nhau đặt chân tới Đà Lạt, Ninh Bình và những vùng hồ sương giăng đầy kỷ niệm.",
+        detail: "Mỗi chuyến đi đều giúp hai đứa hiểu và thương nhau nhiều hơn. Bộ ảnh cưới trên chiếc thuyền gỗ ngập tràn hoa tươi cũng được lấy cảm hứng từ chuyến đi kỷ niệm 2 năm yêu nhau.",
         photo: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80"
       },
       {
         date: "Tháng 08 / 2026",
-        title_vi: "Lời Cầu Hôn Dưới Ánh Nến Lãng Mạn",
-        title_en: "The Candlelight Proposal",
-        short_vi: "Khoảnh khắc chiếc nhẫn lấp lánh cùng câu trả lời 'Em đồng ý!' trong niềm xúc động vỡ òa.",
-        short_en: "A heartfelt 'Yes!' surrounded by blush roses and warm candlelight.",
-        detail_vi: "Giữa không gian ngập tràn hoa hồng phấn và lá khuynh diệp, Huy đã quỳ gối trao chiếc nhẫn tự tay thiết kế để ngỏ lời cùng Hiền xây dựng tổ ấm.",
+        title: "Lời Cầu Hôn Dưới Ánh Nến Lãng Mạn",
+        short: "Khoảnh khắc chiếc nhẫn lấp lánh cùng câu trả lời 'Em đồng ý!' trong niềm xúc động vỡ òa.",
+        detail: "Giữa không gian ngập tràn hoa hồng phấn và lá khuynh diệp, Huy đã quỳ gối trao chiếc nhẫn tự tay thiết kế để ngỏ lời cùng Hiền xây dựng tổ ấm.",
         photo: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80"
       },
       {
         date: "29 / 11 / 2026 (21/10 ÂL)",
-        title_vi: "Ngày Chung Đôi - Về Chung Một Nhà",
-        title_en: "Our Wedding Day - Forever Begins",
-        short_vi: "Chính thức nắm tay nhau bước vào lễ đường trong sự chúc phúc của hai bên gia đình và bạn bè.",
-        short_en: "Walking down the aisle surrounded by the love and blessings of family and friends.",
-        detail_vi: "Hành trình mới mở ra với biết bao niềm vui. Sự hiện diện của bạn chính là mảnh ghép hoàn hảo nhất trong ngày trọng đại của chúng mình!",
+        title: "Ngày Chung Đôi - Về Chung Một Nhà",
+        short: "Chính thức nắm tay nhau bước vào lễ đường trong sự chúc phúc của hai bên gia đình và bạn bè.",
+        detail: "Hành trình mới mở ra với biết bao niềm vui. Sự hiện diện của bạn chính là mảnh ghép hoàn hảo nhất trong ngày trọng đại của chúng mình!",
         photo: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80"
       }
     ];
@@ -1500,8 +1620,6 @@
       loveMilestones.forEach((m, idx) => {
         const isLeft = idx % 2 === 0;
         const isExpanded = expandedMilestoneIdx === idx;
-        const title = currentLang === 'vi' ? m.title_vi : m.title_en;
-        const shortDesc = currentLang === 'vi' ? m.short_vi : m.short_en;
 
         const item = document.createElement('div');
         item.className = `relative pl-10 sm:pl-0 flex flex-col sm:flex-row items-start ${isLeft ? 'sm:flex-row' : 'sm:flex-row-reverse'} gap-4 sm:gap-8`;
@@ -1517,13 +1635,13 @@
               <span class="text-[11px] font-bold uppercase tracking-wider text-botanical-darksage bg-botanical-lightsage px-2.5 py-0.5 rounded-full">${m.date}</span>
               <span class="text-[11px] text-botanical-deepblush font-medium">${isExpanded ? 'Thu gọn ▲' : 'Xem thêm ▼'}</span>
             </div>
-            <h3 class="font-serif text-xl font-bold text-botanical-charcoal mt-1 mb-1.5">${title}</h3>
-            <p class="text-xs text-botanical-charcoal/75 leading-relaxed">${shortDesc}</p>
+            <h3 class="font-serif text-xl font-bold text-botanical-charcoal mt-1 mb-1.5">${m.title}</h3>
+            <p class="text-xs text-botanical-charcoal/75 leading-relaxed">${m.short}</p>
 
             ${isExpanded ? `
               <div class="mt-3 pt-3 border-t border-botanical-sage/20 space-y-2.5 animate-fadeIn">
-                <img src="${m.photo}" alt="${title}" class="w-full h-36 object-cover rounded-lg"/>
-                <p class="text-xs italic font-serif text-botanical-charcoal/85 leading-relaxed">${m.detail_vi}</p>
+                <img src="${m.photo}" alt="${m.title}" class="w-full h-36 object-cover rounded-lg"/>
+                <p class="text-xs italic font-serif text-botanical-charcoal/85 leading-relaxed">${m.detail}</p>
               </div>
             ` : ''}
           </div>
@@ -1604,9 +1722,9 @@
     function filterGallery(category) {
       document.querySelectorAll('.gallery-filter-btn').forEach(btn => {
         if (btn.getAttribute('data-filter') === category) {
-          btn.className = "gallery-filter-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-botanical-darksage text-white shadow-xs transition";
+          btn.className = "gallery-filter-btn btn-sage is-reversed px-4 py-1.5 rounded-full text-xs font-semibold shadow-xs";
         } else {
-          btn.className = "gallery-filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-botanical-charcoal border border-botanical-sage/40 hover:border-botanical-darksage transition";
+          btn.className = "gallery-filter-btn btn-sage px-4 py-1.5 rounded-full text-xs font-semibold shadow-xs";
         }
       });
 
@@ -1872,7 +1990,15 @@
       showToast(`Đã xác nhận chỗ ngồi tại ${table.split(' - ')[0]}!`);
     }
 
-    // --- 8. DYNAMIC VIETQR CUSTOMIZER & GUEST LINK GENERATOR ---
+    // --- 8. DYNAMIC VIETQR CUSTOMIZER, REVEAL TOGGLE & GUEST LINK GENERATOR ---
+    function toggleQrRevealSection() {
+      const panel = document.getElementById('qr-reveal-panel');
+      const btn = document.getElementById('qr-reveal-btn');
+      if (!panel || !btn) return;
+      const isNowHidden = panel.classList.toggle('hidden');
+      btn.classList.toggle('is-reversed', !isNowHidden);
+    }
+
     function updateDynamicVietQR() {
       const memo = document.getElementById('qr-custom-memo').value.trim() || "Chuc mung hanh phuc Huy Hien";
       const encoded = encodeURIComponent(memo);
@@ -1883,7 +2009,7 @@
 
     function openLinkGeneratorModal() {
       const sideSelect = document.getElementById('gen-side-select');
-      if (sideSelect) sideSelect.value = activeHeroCeremony;
+      if (sideSelect && heroCeremonies[activeHeroCeremony]) sideSelect.value = activeHeroCeremony;
       updateGeneratedGuestLink();
       document.getElementById('link-gen-modal').classList.remove('hidden');
     }
@@ -1895,8 +2021,15 @@
     function getGeneratedLinkString() {
       const guestVal = document.getElementById('gen-guest-input').value.trim() || "Quý Khách tham dự";
       const sideSelect = document.getElementById('gen-side-select');
-      const isVuQuy = sideSelect ? sideSelect.value === 'vuquy' : activeHeroCeremony === 'vuquy';
-      const basePath = isVuQuy ? '/vu-quy' : '/';
+      const selected = sideSelect ? sideSelect.value : activeHeroCeremony;
+      const pathMap = {
+        thanhhon: '/',
+        buacomnhagai: '/nha-gai',
+        levuquy: '/vu-quy',
+        anhoi: '/an-hoi',
+        buacomnhatrai: '/nha-trai'
+      };
+      const basePath = pathMap[selected] || '/';
       return `${window.location.origin}${basePath}?guest=${encodeURIComponent(guestVal)}`;
     }
 

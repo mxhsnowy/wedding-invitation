@@ -5,7 +5,10 @@
   "rewrites": [
     { "source": "/vu-quy", "destination": "/index.html" },
     { "source": "/nha-gai", "destination": "/index.html" },
-    { "source": "/bride", "destination": "/index.html" }
+    { "source": "/bride", "destination": "/index.html" },
+    { "source": "/bua-com-nha-gai", "destination": "/index.html" },
+    { "source": "/an-hoi", "destination": "/index.html" },
+    { "source": "/nha-trai", "destination": "/index.html" }
   ],
   "headers": [
     {
