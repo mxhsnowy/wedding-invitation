@@ -1407,10 +1407,10 @@
         <label class="block text-[11px] font-semibold uppercase tracking-wider text-botanical-charcoal/70 mb-1.5">Chọn Thiệp Mời</label>
         <select id="gen-side-select" onchange="updateGeneratedGuestLink()" class="w-full px-3.5 py-2 rounded-lg border border-botanical-sage text-xs bg-white text-botanical-charcoal focus:outline-none focus:border-botanical-darksage">
           <option value="thanhhon">Nhà Trai — Lễ Thành Hôn (10:00 • 29/11)</option>
-          <option value="buacomnhagai">Nhà Gái — Bữa Cơm Thân Mật (17:00 • 28/11) (/nha-gai)</option>
+          <option value="buacomnhagai">Nhà Gái — Bữa Cơm Thân Mật (17:00 • 28/11)</option>
           <option value="buacomnhatrai">Nhà Trai — Bữa Cơm Thân Mật (17:00 • 28/11)</option>
-          <option value="anhoi">Nhà Gái — Lễ Ăn Hỏi (14:00 • 28/11) (/an-hoi)</option>
-          <option value="levuquy">Nhà Gái — Lễ Vu Quy (07:00 • 29/11) (/vu-quy)</option>
+          <option value="anhoi">Nhà Gái — Lễ Ăn Hỏi (14:00 • 28/11)</option>
+          <option value="levuquy">Nhà Gái — Lễ Vu Quy (07:00 • 29/11)</option>
         </select>
       </div>
       <div class="bg-botanical-ivory p-3 rounded-lg border border-botanical-sage/30 text-[11px] font-mono text-botanical-darksage break-all mb-4" id="gen-link-preview">
@@ -2022,15 +2022,14 @@
       const guestVal = document.getElementById('gen-guest-input').value.trim() || "Quý Khách tham dự";
       const sideSelect = document.getElementById('gen-side-select');
       const selected = sideSelect ? sideSelect.value : activeHeroCeremony;
-      const pathMap = {
-        thanhhon: '/',
-        buacomnhagai: '/nha-gai',
-        levuquy: '/vu-quy',
-        anhoi: '/an-hoi',
-        buacomnhatrai: '/nha-trai'
-      };
-      const basePath = pathMap[selected] || '/';
-      return `${window.location.origin}${basePath}?guest=${encodeURIComponent(guestVal)}`;
+      const basePath = window.location.pathname.endsWith('/index.html') ? window.location.pathname : '/';
+      const baseUrl = window.location.origin === 'null'
+        ? window.location.href.split('?')[0].split('#')[0]
+        : `${window.location.origin}${basePath}`;
+      if (selected === 'thanhhon') {
+        return `${baseUrl}?guest=${encodeURIComponent(guestVal)}`;
+      }
+      return `${baseUrl}?tab=${encodeURIComponent(selected)}&guest=${encodeURIComponent(guestVal)}`;
     }
 
     function updateGeneratedGuestLink() {
